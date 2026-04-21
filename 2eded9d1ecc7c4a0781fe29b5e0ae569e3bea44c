@@ -1,0 +1,24 @@
+xinference/core/worker.py
+  179d127511173d9a 27,106-132,1413-1415,1417-1424,1426-1427,1429-1435,1437-1442,1444-1456,1458-1475,1477-1484,1487
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.6",
+  "base_commit_sha": "2eded9d1ecc7c4a0781fe29b5e0ae569e3bea44c",
+  "prompts": {
+    "179d127511173d9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ff2c6ff9-1f28-4d28-a312-b548ae91e581",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 95,
+      "total_deletions": 62,
+      "accepted_lines": 95,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/66d2034e824efc6a431a12e4ba58767fe8c0f59eaddacd08c17414186f830bc5"
+    }
+  }
+}
