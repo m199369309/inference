@@ -1,0 +1,26 @@
+xinference/core/tests/test_cluster_metrics.py
+  179d127511173d9a 43-59,114-192
+xinference/core/supervisor.py
+  179d127511173d9a 737-762
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.6",
+  "base_commit_sha": "a6ccb91c7a5fa482d3a5ef5a080e5a2c9e8bb964",
+  "prompts": {
+    "179d127511173d9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ff2c6ff9-1f28-4d28-a312-b548ae91e581",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 122,
+      "total_deletions": 6,
+      "accepted_lines": 122,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/791613d45d4970d4d07d8d40fbf718200139ae10f197f00db73457c9d4864274"
+    }
+  }
+}
