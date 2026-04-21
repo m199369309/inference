@@ -110,6 +110,9 @@ def _exclusive_venv_path_lock(env_path: str):
     logical virtualenv path. Avoids TOCTOU races when multiple model replicas
     call ``create_env`` concurrently (see Xinference virtualenv v4 layout).
 
+    Ensures the lock file's parent directory exists before ``os.open`` so cold
+    starts work after the entire venv tree was removed.
+
     Uses a sibling lock file ``{realpath(env_path)}.xinference-venv.lock``.
     On Windows this is a no-op (``fcntl`` unavailable / different semantics).
     """
@@ -121,6 +124,9 @@ def _exclusive_venv_path_lock(env_path: str):
 
     real = os.path.realpath(os.path.normpath(env_path))
     lock_path = f"{real}.xinference-venv.lock"
+    lock_dir = os.path.dirname(lock_path)
+    if lock_dir:
+        os.makedirs(lock_dir, exist_ok=True)
     fd = os.open(lock_path, os.O_CREAT | os.O_RDWR, 0o644)
     try:
         fcntl.flock(fd, fcntl.LOCK_EX)
