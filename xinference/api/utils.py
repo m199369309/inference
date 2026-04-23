@@ -133,6 +133,8 @@ async def require_model(
             raise HTTPException(status_code=404, detail=cached_detail)
 
         return await supervisor.get_model(model_uid)
+    except HTTPException:
+        raise
     except ValueError as ve:
         logger.error(str(ve), exc_info=True)
         if report_error_event:
