@@ -90,7 +90,7 @@ async def test_restful_api(setup):
     assert response_data["replica"] == 1
 
     response = requests.delete(f"{endpoint}/v1/models/bogus")
-    assert response.status_code == 400
+    assert response.status_code == 404
 
     # generate
     url = f"{endpoint}/v1/completions"
@@ -107,7 +107,7 @@ async def test_restful_api(setup):
         "prompt": "Once upon a time, there was a very old computer.",
     }
     response = requests.post(url, json=payload)
-    assert response.status_code == 400
+    assert response.status_code == 404
 
     payload = {
         "prompt": "Once upon a time, there was a very old computer.",
@@ -168,7 +168,7 @@ async def test_restful_api(setup):
         ],
     }
     response = requests.post(url, json=payload)
-    assert response.status_code == 400
+    assert response.status_code == 404
 
     payload = {
         "model": model_uid_res,
@@ -222,7 +222,7 @@ async def test_restful_api(setup):
     # delete again
     url = f"{endpoint}/v1/models/test_restful_api"
     response = requests.delete(url)
-    assert response.status_code == 400
+    assert response.status_code == 404
 
     # list model registration
 

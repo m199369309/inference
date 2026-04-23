@@ -63,7 +63,7 @@ class TestRequireModel:
         with pytest.raises(HTTPException) as exc_info:
             await require_model(get_supervisor, "missing-model")
 
-        assert exc_info.value.status_code == 400
+        assert exc_info.value.status_code == 404
 
     @pytest.mark.asyncio
     async def test_unexpected_error_raises_500(self):
