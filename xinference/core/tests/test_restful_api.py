@@ -90,7 +90,7 @@ async def test_restful_api(setup):
     assert response_data["replica"] == 1
 
     response = requests.delete(f"{endpoint}/v1/models/bogus")
-    assert response.status_code == 404
+    assert response.status_code == 400
 
     # generate
     url = f"{endpoint}/v1/completions"
