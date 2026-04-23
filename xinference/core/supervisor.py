@@ -1658,6 +1658,15 @@ class SupervisorActor(xo.StatelessActor):
                     ],
                 )
 
+                # Pre-check: ensure no replica uid already exists before entering
+                # asyncio.gather, preventing partial-deploy-then-rollback
+                # (see 2026041602.md §2.1).
+                for _pre_check_uid in iter_replica_model_uid(model_uid, replica):
+                    if _pre_check_uid in self._replica_model_uid_to_worker:
+                        raise ValueError(
+                            f"Model is already in the model list, uid: {_pre_check_uid}"
+                        )
+
                 # Prepare all launch tasks for parallel execution
                 launch_tasks = []
                 task_metadata = []  # Store (worker_ref, rep_model_uid, is_rank0, idx)
@@ -1867,6 +1876,15 @@ class SupervisorActor(xo.StatelessActor):
                     "n_worker cannot be larger than the number of available workers."
                 )
             try:
+                # Pre-check: ensure no replica uid already exists before
+                # launching, preventing partial-deploy-then-rollback
+                # (see 2026041602.md §2.1).
+                for _pre_check_uid in iter_replica_model_uid(model_uid, replica):
+                    if _pre_check_uid in self._replica_model_uid_to_worker:
+                        raise ValueError(
+                            f"Model is already in the model list, uid: {_pre_check_uid}"
+                        )
+
                 for _idx, rep_model_uid in enumerate(
                     iter_replica_model_uid(model_uid, replica)
                 ):
@@ -2234,7 +2252,11 @@ class SupervisorActor(xo.StatelessActor):
     async def get_model(self, model_uid: str) -> xo.ActorRefType["ModelActor"]:
         replica_info = self._model_uid_to_replica_info.get(model_uid, None)
         if replica_info is None:
-            raise ValueError(f"Model not found in the model list, uid: {model_uid}")
+            available_uids = list(self._model_uid_to_replica_info.keys())
+            raise ValueError(
+                f"Model not found in the model list, uid: {model_uid}. "
+                f"Available model uids: {available_uids}"
+            )
 
         if not replica_info.active_replica_ids:
             raise ValueError(f"Model not found in the model list, uid: {model_uid}")
