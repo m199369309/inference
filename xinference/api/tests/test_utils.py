@@ -15,7 +15,15 @@
 import pytest
 from fastapi import HTTPException
 
-from ..utils import require_model
+from ..utils import _MODEL_NOT_FOUND_CACHE, require_model
+
+
+@pytest.fixture(autouse=True)
+def _clear_negative_cache():
+    """Clear the negative cache before each test to avoid cross-test pollution."""
+    _MODEL_NOT_FOUND_CACHE.clear()
+    yield
+    _MODEL_NOT_FOUND_CACHE.clear()
 
 
 class DummyModel:

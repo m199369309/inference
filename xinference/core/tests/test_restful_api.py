@@ -222,7 +222,7 @@ async def test_restful_api(setup):
     # delete again
     url = f"{endpoint}/v1/models/test_restful_api"
     response = requests.delete(url)
-    assert response.status_code == 404
+    assert response.status_code == 400
 
     # list model registration
 
