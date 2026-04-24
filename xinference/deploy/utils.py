@@ -40,8 +40,6 @@ class SafeRotatingFileHandler(logging.handlers.RotatingFileHandler):
     parent Worker process and may no longer exist when the sub-pool
     calls ``dictConfig``.  This subclass ensures the directory is
     (re-)created before the file is opened.
-
-    See 2026041603.md §2.1.
     """
 
     def __init__(self, filename, *args, **kwargs):

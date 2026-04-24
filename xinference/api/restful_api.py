@@ -594,7 +594,7 @@ class RESTfulAPI(CancelMixin):
             raise HTTPException(status_code=500, detail=str(e))
 
         # Clear negative cache so that get_model for this uid is not blocked
-        # by a stale "Model not found" entry (see 2026041601 §2.1.2).
+        # by a stale "Model not found" entry.
         from xinference.api.utils import invalidate_model_not_found_cache
 
         invalidate_model_not_found_cache(model_uid)

@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
 # Negative cache for ``get_model`` – prevents retry floods from blocking
-# the Supervisor Actor message queue (see 2026041601.md §2.1.2).
+# the Supervisor Actor message queue.
 #
 # When ``get_model`` raises ``ValueError`` ("Model not found …"), the uid is
 # stored with an expiry timestamp.  Subsequent requests for the **same uid**
@@ -126,7 +126,7 @@ async def require_model(
     try:
         supervisor = await get_supervisor_ref()
 
-        # ---- negative-cache fast path (2026041601 §2.1.2) ----
+        # ---- negative-cache fast path ----
         cached_detail = _check_negative_cache(model_uid)
         if cached_detail is not None:
             logger.debug("get_model blocked by negative cache for uid: %s", model_uid)
@@ -141,10 +141,10 @@ async def require_model(
             await report_error_event(model_uid, str(ve))
         # Write to negative cache so that rapid retries for the same
         # non-existent uid are handled at the REST layer without reaching
-        # the Supervisor Actor (see 2026041601 §2.1.2).
+        # the Supervisor Actor.
         _put_negative_cache(model_uid)
         # HTTP 404 – "resource not found" is the correct semantic for a
-        # model uid that does not exist (2026041601 §2.1.1).
+        # model uid that does not exist.
         raise HTTPException(status_code=404, detail=str(ve))
     except Exception as e:
         logger.error(e, exc_info=True)

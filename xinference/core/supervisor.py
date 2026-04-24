@@ -1659,8 +1659,7 @@ class SupervisorActor(xo.StatelessActor):
                 )
 
                 # Pre-check: ensure no replica uid already exists before entering
-                # asyncio.gather, preventing partial-deploy-then-rollback
-                # (see 2026041602.md §2.1).
+                # asyncio.gather, preventing partial-deploy-then-rollback.
                 for _pre_check_uid in iter_replica_model_uid(model_uid, replica):
                     if _pre_check_uid in self._replica_model_uid_to_worker:
                         raise ValueError(
@@ -1877,8 +1876,7 @@ class SupervisorActor(xo.StatelessActor):
                 )
             try:
                 # Pre-check: ensure no replica uid already exists before
-                # launching, preventing partial-deploy-then-rollback
-                # (see 2026041602.md §2.1).
+                # launching, preventing partial-deploy-then-rollback.
                 for _pre_check_uid in iter_replica_model_uid(model_uid, replica):
                     if _pre_check_uid in self._replica_model_uid_to_worker:
                         raise ValueError(
