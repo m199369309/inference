@@ -2127,9 +2127,7 @@ class SupervisorActor(xo.StatelessActor):
                 # Heartbeat only covers worker->supervisor; this probes
                 # supervisor->worker so we detect dead reverse channels
                 # even when the worker process is alive.
-                for address, worker_ref in list(
-                    self._worker_address_to_worker.items()
-                ):
+                for address, worker_ref in list(self._worker_address_to_worker.items()):
                     if address in dead_nodes:
                         self._reverse_ping_failures.pop(address, None)
                         continue

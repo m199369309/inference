@@ -15,9 +15,6 @@
 import asyncio
 import logging
 import multiprocessing
-
-import xinference.core.xoscar_keepalive  # noqa: F401  TCP keepalive patch
-
 import signal
 import sys
 import traceback
@@ -26,6 +23,8 @@ from typing import Dict, Optional
 
 import xoscar as xo
 from xoscar.utils import get_next_port
+
+import xinference.core.xoscar_keepalive  # noqa: F401  TCP keepalive patch
 
 from ..constants import (
     XINFERENCE_HEALTH_CHECK_FAILURE_THRESHOLD,

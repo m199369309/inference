@@ -1474,7 +1474,10 @@ class WorkerActor(xo.StatelessActor):
                     # otherwise atomic-write via a temp file + os.replace.
                     needs_write = True
                     try:
-                        if pth_file.exists() and pth_file.read_text() == desired_content:
+                        if (
+                            pth_file.exists()
+                            and pth_file.read_text() == desired_content
+                        ):
                             needs_write = False
                     except OSError:
                         pass
