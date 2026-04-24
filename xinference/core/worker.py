@@ -53,6 +53,7 @@ from ..constants import (
     XINFERENCE_DISABLE_METRICS,
     XINFERENCE_ENABLE_VIRTUAL_ENV,
     XINFERENCE_HEALTH_CHECK_INTERVAL,
+    XINFERENCE_MODEL_DOWNLOAD_WORKERS,
     XINFERENCE_STATUS_GATHER_TIMEOUT,
     XINFERENCE_STATUS_REPORT_MULTIPLIER,
     XINFERENCE_TCP_REQUEST_TIMEOUT,
@@ -1467,12 +1468,35 @@ class WorkerActor(xo.StatelessActor):
                     )
                     child_site_packages.mkdir(parents=True, exist_ok=True)
                     pth_file = child_site_packages / "_xinference_parent.pth"
-                    pth_file.write_text(parent_site_packages + "\n")
-                    logger.debug(
-                        "Injected parent site-packages into child venv via %s -> %s",
-                        pth_file,
-                        parent_site_packages,
-                    )
+                    desired_content = parent_site_packages + "\n"
+                    # Avoid truncate race when multiple replicas write the
+                    # same .pth concurrently: skip if content already correct,
+                    # otherwise atomic-write via a temp file + os.replace.
+                    needs_write = True
+                    try:
+                        if pth_file.exists() and pth_file.read_text() == desired_content:
+                            needs_write = False
+                    except OSError:
+                        pass
+                    if needs_write:
+                        tmp_file = pth_file.with_suffix(".pth.tmp")
+                        try:
+                            tmp_file.write_text(desired_content)
+                            os.replace(str(tmp_file), str(pth_file))
+                        except OSError:
+                            # Fallback: direct write (still better than no .pth)
+                            pth_file.write_text(desired_content)
+                        logger.debug(
+                            "Injected parent site-packages into child venv "
+                            "via %s -> %s",
+                            pth_file,
+                            parent_site_packages,
+                        )
+                    else:
+                        logger.debug(
+                            "Skipped .pth write (content unchanged): %s",
+                            pth_file,
+                        )
                 else:
                     logger.warning(
                         "Parent site-packages path does not exist: %s — child venv "
@@ -1820,20 +1844,32 @@ class WorkerActor(xo.StatelessActor):
                                 self._upload_download_progress, progressor, downloader
                             )
                         )
-                        model = await asyncio.to_thread(
-                            create_model_instance,
-                            model_uid,
-                            model_type,
-                            model_name,
-                            model_engine,
-                            model_format,
-                            model_size_in_billions,
-                            quantization,
-                            peft_model_config,
-                            download_hub,
-                            model_path,
-                            **model_kwargs,
+                        # Limit hf_hub download concurrency to reduce GIL
+                        # contention that starves the event loop.
+                        _orig_hf_workers = os.environ.get("HF_HUB_DOWNLOAD_WORKERS")
+                        os.environ["HF_HUB_DOWNLOAD_WORKERS"] = str(
+                            XINFERENCE_MODEL_DOWNLOAD_WORKERS
                         )
+                        try:
+                            model = await asyncio.to_thread(
+                                create_model_instance,
+                                model_uid,
+                                model_type,
+                                model_name,
+                                model_engine,
+                                model_format,
+                                model_size_in_billions,
+                                quantization,
+                                peft_model_config,
+                                download_hub,
+                                model_path,
+                                **model_kwargs,
+                            )
+                        finally:
+                            if _orig_hf_workers is not None:
+                                os.environ["HF_HUB_DOWNLOAD_WORKERS"] = _orig_hf_workers
+                            else:
+                                os.environ.pop("HF_HUB_DOWNLOAD_WORKERS", None)
                     model.model_family.address = subpool_address
                     model.model_family.accelerators = devices
                     model.model_family.multimodal_projector = model_kwargs.get(
@@ -2172,6 +2208,10 @@ class WorkerActor(xo.StatelessActor):
             self._clear_supervisor_refs()
             supervisor_ref = await self.get_supervisor_ref(add_worker=True)
             await supervisor_ref.report_worker_status(self.address, status)
+
+    async def ping(self) -> bool:
+        """Lightweight liveness probe for supervisor reverse-channel check."""
+        return True
 
     async def heartbeat(self):
         """

@@ -15,6 +15,9 @@
 import asyncio
 import logging
 import multiprocessing
+
+import xinference.core.xoscar_keepalive  # noqa: F401  TCP keepalive patch
+
 import os
 from typing import Any, Optional
 

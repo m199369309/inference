@@ -127,6 +127,14 @@ class SupervisorActor(xo.StatelessActor):
         self._model_uid_to_replica_info: Dict[str, ReplicaInfo] = {}  # type: ignore
         self._uptime = None
         self._lock = asyncio.Lock()
+        # list_models cache for graceful degradation when a worker is unreachable
+        self._list_models_cache: Dict[str, Dict[str, Dict[str, Any]]] = {}
+        # Reverse-ping failure counter per worker
+        self._reverse_ping_failures: Dict[str, int] = {}
+        # Track workers currently launching models — when a worker has active
+        # launches, reverse-channel dead detection is exempted because
+        # long-running model downloads can starve the actor event loop.
+        self._workers_launching: Dict[str, int] = {}  # address -> active launch count
 
     @classmethod
     def default_uid(cls) -> str:
@@ -1554,6 +1562,11 @@ class SupervisorActor(xo.StatelessActor):
             # LLM as default for compatibility
             model_type = model_type or "LLM"
 
+            # Track this worker as launching so reverse-channel dead
+            # detection is exempted during long model downloads.
+            _addr = worker_ref.address
+            self._workers_launching[_addr] = self._workers_launching.get(_addr, 0) + 1
+
             try:
                 subpool_address = await worker_ref.launch_builtin_model(
                     model_uid=_replica_model_uid,
@@ -1591,6 +1604,13 @@ class SupervisorActor(xo.StatelessActor):
                     {"status": LaunchStatus.ERROR.name, "error_message": str(e)},
                 )
                 raise
+            finally:
+                # Decrement launching counter
+                _cnt = self._workers_launching.get(_addr, 1) - 1
+                if _cnt <= 0:
+                    self._workers_launching.pop(_addr, None)
+                else:
+                    self._workers_launching[_addr] = _cnt
 
         async def _launch_model():
             try:
@@ -2102,6 +2122,79 @@ class SupervisorActor(xo.StatelessActor):
                 for address in dead_nodes:
                     self._worker_status.pop(address, None)
                     self._worker_address_to_worker.pop(address, None)
+
+                # ---- Reverse-channel probe ----
+                # Heartbeat only covers worker->supervisor; this probes
+                # supervisor->worker so we detect dead reverse channels
+                # even when the worker process is alive.
+                for address, worker_ref in list(
+                    self._worker_address_to_worker.items()
+                ):
+                    if address in dead_nodes:
+                        self._reverse_ping_failures.pop(address, None)
+                        continue
+                    try:
+                        await xo.wait_for(worker_ref.ping(), timeout=5)
+                        # Reset on success
+                        self._reverse_ping_failures.pop(address, None)
+                    except Exception:
+                        # If the worker is launching a model, exempt it from
+                        # reverse-channel dead detection. Long-running
+                        # downloads can starve the actor event loop for
+                        # minutes, but the worker is still alive.
+                        # Heartbeat path still detects real process crashes.
+                        if address in self._workers_launching:
+                            logger.warning(
+                                "Worker reverse-channel timeout. address: %s "
+                                "(launching model, reverse-channel check skipped)",
+                                address,
+                            )
+                            # Do NOT accumulate failure count; reset it so
+                            # that when launching finishes, the worker starts
+                            # with a clean slate.
+                            self._reverse_ping_failures.pop(address, None)
+                            continue
+
+                        count = self._reverse_ping_failures.get(address, 0) + 1
+                        self._reverse_ping_failures[address] = count
+                        if count >= XINFERENCE_HEALTH_CHECK_FAILURE_THRESHOLD:
+                            # Treat as dead — same cleanup as heartbeat failure
+                            status = self._worker_status.get(address)
+                            if status is not None:
+                                status.failure_remaining_count = 0
+                            dead_models = []
+                            for model_uid in self._replica_model_uid_to_worker:
+                                worker_refs = self._replica_model_uid_to_worker[
+                                    model_uid
+                                ]
+                                if not isinstance(worker_refs, (list, tuple)):
+                                    worker_refs = [worker_refs]
+                                for wr in worker_refs:
+                                    if wr.address == address:
+                                        dead_models.append(model_uid)
+                            logger.error(
+                                "Worker reverse-channel dead. address: %s, "
+                                "influenced models: %s",
+                                address,
+                                dead_models,
+                            )
+                            for replica_model_uid in dead_models:
+                                model_uid, _ = parse_replica_model_uid(
+                                    replica_model_uid
+                                )
+                                self._model_uid_to_replica_info.pop(model_uid, None)
+                                self._replica_model_uid_to_worker.pop(
+                                    replica_model_uid, None
+                                )
+                            dead_nodes.append(address)
+                            self._reverse_ping_failures.pop(address, None)
+                        else:
+                            logger.error(
+                                "Worker reverse-channel timeout. address: %s, "
+                                "check count remaining %s...",
+                                address,
+                                XINFERENCE_HEALTH_CHECK_FAILURE_THRESHOLD - count,
+                            )
             finally:
                 await asyncio.sleep(XINFERENCE_HEALTH_CHECK_INTERVAL)
 
@@ -2332,17 +2425,30 @@ class SupervisorActor(xo.StatelessActor):
             worker_address: str, worker_ref: xo.ActorRefType["WorkerActor"]
         ) -> Dict[str, Dict[str, Any]]:
             try:
-                return await xo.wait_for(
+                result = await xo.wait_for(
                     worker_ref.list_models(),
                     XINFERENCE_LIST_MODELS_PER_WORKER_TIMEOUT,
                 )
+                # Update cache on success
+                self._list_models_cache[worker_address] = result
+                return result
             except Exception as ex:
-                logger.warning(
-                    "list_models from worker %s failed or timed out: %s",
-                    worker_address,
-                    ex,
-                )
-                return {}
+                cached = self._list_models_cache.get(worker_address, {})
+                if cached:
+                    logger.warning(
+                        "list_models from worker %s failed or timed out: %s, "
+                        "returning cached result (%d models)",
+                        worker_address,
+                        ex,
+                        len(cached),
+                    )
+                else:
+                    logger.warning(
+                        "list_models from worker %s failed or timed out: %s",
+                        worker_address,
+                        ex,
+                    )
+                return cached
 
         parts = await asyncio.gather(*(_fetch_one(addr, ref) for addr, ref in workers))
         for part in parts:
