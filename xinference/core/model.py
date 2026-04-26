@@ -96,7 +96,8 @@ def request_limit(fn):
         )
         # Count every incoming request (including those rejected by rate limit)
         await self.record_metrics(
-            "model_request_total", "add",
+            "model_request_total",
+            "add",
             {"labels": self._metrics_labels, "value": 1},
         )
         if 1 + self._serve_count <= self._request_limits:
@@ -104,14 +105,16 @@ def request_limit(fn):
         else:
             # Rate-limited requests count as errors
             await self.record_metrics(
-                "model_request_errors_total", "add",
+                "model_request_errors_total",
+                "add",
                 {"labels": self._metrics_labels, "value": 1},
             )
             raise RuntimeError(
                 f"Rate limit reached for the model. Request limit {self._request_limits} for the model: {self.model_uid()}"
             )
         await self.record_metrics(
-            "model_serve_count", "set",
+            "model_serve_count",
+            "set",
             {"labels": self._metrics_labels, "value": self._serve_count},
         )
         start_time = time.time()
@@ -132,19 +135,22 @@ def request_limit(fn):
             else:
                 self._serve_count -= 1
                 await self.record_metrics(
-                    "model_serve_count", "set",
+                    "model_serve_count",
+                    "set",
                     {"labels": self._metrics_labels, "value": self._serve_count},
                 )
                 logger.debug(
                     f"After request {fn.__name__}, current serve request count: {self._serve_count} for the model {self.model_uid()}"
                 )
             await self.record_metrics(
-                "model_request_duration_seconds", "observe",
+                "model_request_duration_seconds",
+                "observe",
                 {"labels": self._metrics_labels, "value": duration},
             )
             if _error:
                 await self.record_metrics(
-                    "model_request_errors_total", "add",
+                    "model_request_errors_total",
+                    "add",
                     {"labels": self._metrics_labels, "value": 1},
                 )
         return ret
@@ -293,7 +299,8 @@ class ModelActor(xo.StatelessActor, CancelMixin):
         # Report static request limit gauge
         limit_val = self._request_limits if self._request_limits != float("inf") else -1
         await self.record_metrics(
-            "model_request_limit_gauge", "set",
+            "model_request_limit_gauge",
+            "set",
             {"labels": self._metrics_labels, "value": limit_val},
         )
 

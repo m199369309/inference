@@ -382,9 +382,7 @@ class RESTfulAPI(CancelMixin):
                 models_data = await supervisor_ref.list_models()
                 update_cluster_metrics(cluster_data, models_data)
             except Exception:
-                logger.warning(
-                    "Failed to update cluster metrics", exc_info=True
-                )
+                logger.warning("Failed to update cluster metrics", exc_info=True)
 
     async def _get_builtin_prompts(self) -> JSONResponse:
         """

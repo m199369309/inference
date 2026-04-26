@@ -888,7 +888,11 @@ class SupervisorActor(xo.StatelessActor):
             )
             infos = await status_guard_ref.get_instance_info()
             instance_infos = [
-                {"model_uid": i.model_uid, "model_name": i.model_name, "status": i.status}
+                {
+                    "model_uid": i.model_uid,
+                    "model_name": i.model_name,
+                    "status": i.status,
+                }
                 for i in infos
             ]
         except Exception:

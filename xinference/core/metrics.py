@@ -62,8 +62,20 @@ model_request_duration_seconds = Histogram(
     "xinference:model_request_duration_seconds",
     "Model request duration in seconds.",
     buckets=(
-        0.01, 0.025, 0.05, 0.1, 0.25, 0.5,
-        1.0, 2.5, 5.0, 10.0, 30.0, 60.0, 120.0, float("inf"),
+        0.01,
+        0.025,
+        0.05,
+        0.1,
+        0.25,
+        0.5,
+        1.0,
+        2.5,
+        5.0,
+        10.0,
+        30.0,
+        60.0,
+        120.0,
+        float("inf"),
     ),
 )
 model_serve_count = Gauge(
@@ -206,8 +218,12 @@ def update_cluster_metrics(
             g_key = (addr, gpu_idx, gpu_name)
             cur_gpu_labels.add(g_key)
             worker_gpu_utilization_percent.set(g_labels, getattr(val, "gpu_util", 0))
-            worker_gpu_memory_used_bytes.set(g_labels, getattr(val, "gpu_mem_used", getattr(val, "mem_used", 0)))
-            worker_gpu_memory_total_bytes.set(g_labels, getattr(val, "gpu_mem_total", getattr(val, "mem_total", 0)))
+            worker_gpu_memory_used_bytes.set(
+                g_labels, getattr(val, "gpu_mem_used", getattr(val, "mem_used", 0))
+            )
+            worker_gpu_memory_total_bytes.set(
+                g_labels, getattr(val, "gpu_mem_total", getattr(val, "mem_total", 0))
+            )
 
     # Clear stale worker labels
     for stale in _prev_worker_labels - cur_worker_labels:
@@ -226,7 +242,7 @@ def update_cluster_metrics(
 
     # --- Models loaded by type ---
     type_counts: Dict[str, int] = defaultdict(int)
-    cur_model_labels: Set[Tuple[str, ...]] = set()
+    cur_model_labels: set = set()
 
     model_replica_dist = cluster_data.get("model_replica_distribution", {})
 
@@ -247,9 +263,13 @@ def update_cluster_metrics(
                     "replica_on_worker": str(w_count),
                     "replica_total": replica_total,
                 }
-                label_key = (
-                    model_uid, model_name, model_type,
-                    str(w_addr), str(w_count), replica_total,
+                label_key = (  # type: ignore[assignment]
+                    model_uid,
+                    model_name,
+                    model_type,
+                    str(w_addr),
+                    str(w_count),
+                    replica_total,
                 )
                 cur_model_labels.add(label_key)
                 model_info_gauge.set(m_labels, 1)
@@ -264,9 +284,13 @@ def update_cluster_metrics(
                 "replica_on_worker": replica,
                 "replica_total": replica,
             }
-            label_key = (
-                model_uid, model_name, model_type,
-                str(worker_address), replica, replica,
+            label_key = (  # type: ignore[assignment]
+                model_uid,
+                model_name,
+                model_type,
+                str(worker_address),
+                replica,
+                replica,
             )
             cur_model_labels.add(label_key)
             model_info_gauge.set(m_labels, 1)
@@ -285,7 +309,7 @@ def update_cluster_metrics(
     _prev_model_labels = cur_model_labels
 
     # --- Model GPU binding (per-replica, per-GPU) ---
-    cur_gpu_binding_labels: Set[Tuple[str, ...]] = set()
+    cur_gpu_binding_labels: set = set()
 
     for model_uid, info in models_data.items():
         model_type = info.get("model_type", "unknown")
@@ -302,9 +326,13 @@ def update_cluster_metrics(
                         "gpu_index": gpu_idx,
                         "replica_index": rep_idx,
                     }
-                    label_key = (
-                        model_uid, model_name, model_type,
-                        str(w_addr), gpu_idx, rep_idx,
+                    label_key = (  # type: ignore[assignment]
+                        model_uid,
+                        model_name,
+                        model_type,
+                        str(w_addr),
+                        gpu_idx,
+                        rep_idx,
                     )
                     cur_gpu_binding_labels.add(label_key)
                     model_gpu_binding_gauge.set(b_labels, 1)
