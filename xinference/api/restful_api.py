@@ -271,13 +271,22 @@ class RESTfulAPI(CancelMixin):
             )
             self._app.include_router(self._router)
         else:
-            # Clear the global Registry for the MetricsMiddleware, or
-            # the MetricsMiddleware will register duplicated metrics if the port
-            # conflict (This serve method run more than once).
-            REGISTRY.clear()
+            # Only remove MetricsMiddleware's HTTP counters to avoid duplicates
+            # on restart; preserve xinference:* custom metrics registered at
+            # module level in metrics.py.
+            for collector in list(REGISTRY.get_all()):
+                if not collector.name.startswith("xinference:"):
+                    REGISTRY.deregister(collector)
             self._app.add_middleware(MetricsMiddleware)
             self._app.include_router(self._router)
             self._app.add_route("/metrics", metrics)
+
+            # Start background task to periodically refresh cluster metrics
+            @self._app.on_event("startup")
+            async def _start_cluster_metrics_updater():
+                import asyncio
+
+                asyncio.create_task(self._cluster_metrics_update_loop())
 
         # Check all the routes returns Response.
         # This is to avoid `jsonable_encoder` performance issue:
@@ -358,6 +367,24 @@ class RESTfulAPI(CancelMixin):
         )
         server = Server(config)
         server.run()
+
+    async def _cluster_metrics_update_loop(self):
+        """Periodically refresh Supervisor-side Prometheus Gauges (every 15s)."""
+        import asyncio
+
+        from ..core.metrics import update_cluster_metrics
+
+        while True:
+            try:
+                await asyncio.sleep(15)
+                supervisor_ref = await self._get_supervisor_ref()
+                cluster_data = await supervisor_ref.get_cluster_metrics_data()
+                models_data = await supervisor_ref.list_models()
+                update_cluster_metrics(cluster_data, models_data)
+            except Exception:
+                logger.warning(
+                    "Failed to update cluster metrics", exc_info=True
+                )
 
     async def _get_builtin_prompts(self) -> JSONResponse:
         """

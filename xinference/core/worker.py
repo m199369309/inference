@@ -1921,6 +1921,7 @@ class WorkerActor(xo.StatelessActor):
                     n_worker=n_worker,
                     shard=shard,
                     driver_info=driver_info,
+                    model_engine=model_engine,
                 )
                 if await model_ref.need_create_pools() and (
                     len(devices) > 1 or n_worker > 1  # type: ignore

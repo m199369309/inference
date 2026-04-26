@@ -127,6 +127,7 @@ class SupervisorActor(xo.StatelessActor):
         self._model_uid_to_replica_info: Dict[str, ReplicaInfo] = {}  # type: ignore
         self._uptime = None
         self._lock = asyncio.Lock()
+        self._replica_gpu_cache: Dict[str, list] = {}
         # list_models cache for graceful degradation when a worker is unreachable
         self._list_models_cache: Dict[str, Dict[str, Dict[str, Any]]] = {}
         # Reverse-ping failure counter per worker
@@ -869,6 +870,55 @@ class SupervisorActor(xo.StatelessActor):
         return {
             "uptime": int(time.time() - self._uptime),
             "workers": self._worker_status,
+        }
+
+    async def get_cluster_metrics_data(self) -> Dict:
+        """Return all data needed to refresh Supervisor-side Prometheus gauges."""
+        workers: Dict[str, Any] = {}
+        for addr, ws in self._worker_status.items():
+            workers[addr] = ws.status
+
+        # Model lifecycle statuses (CREATING/READY/ERROR)
+        instance_infos: list = []
+        try:
+            from .status_guard import StatusGuardActor
+
+            status_guard_ref = await xo.actor_ref(
+                address=self.address, uid=StatusGuardActor.default_uid()
+            )
+            infos = await status_guard_ref.get_instance_info()
+            instance_infos = [
+                {"model_uid": i.model_uid, "model_name": i.model_name, "status": i.status}
+                for i in infos
+            ]
+        except Exception:
+            logger.warning("Failed to get instance info for metrics", exc_info=True)
+
+        # Model replica distribution across workers
+        model_replica_distribution: Dict[str, Dict[str, Any]] = {}
+        for model_uid, replica_info in self._model_uid_to_replica_info.items():
+            worker_replica_count: Dict[str, int] = defaultdict(int)
+            replica_gpu_details: list = []
+            for _rep_idx, ref_list in replica_info.replica_to_worker_refs.items():
+                replica_uid = f"{model_uid}-{_rep_idx}"
+                gpu_indices = self._replica_gpu_cache.get(replica_uid, [])
+                for ref in ref_list:
+                    worker_replica_count[ref.address] += 1
+                    replica_gpu_details.append(
+                        (str(_rep_idx), ref.address, gpu_indices)
+                    )
+            model_replica_distribution[model_uid] = {
+                "replica_total": replica_info.replica,
+                "worker_distribution": dict(worker_replica_count),
+                "replica_gpu_details": replica_gpu_details,
+            }
+
+        return {
+            "uptime": int(time.time() - self._uptime) if self._uptime else 0,
+            "worker_count": len(self._worker_address_to_worker),
+            "workers": workers,
+            "instance_infos": instance_infos,
+            "model_replica_distribution": model_replica_distribution,
         }
 
     def _get_spec_dicts(
@@ -2451,6 +2501,15 @@ class SupervisorActor(xo.StatelessActor):
         parts = await asyncio.gather(*(_fetch_one(addr, ref) for addr, ref in workers))
         for part in parts:
             ret.update(part)
+
+        # Cache per-replica GPU info before dedup (for get_cluster_metrics_data)
+        replica_gpu_cache: Dict[str, list] = {}
+        for replica_uid, spec in ret.items():
+            accelerators = spec.get("accelerators")
+            if accelerators:
+                replica_gpu_cache[replica_uid] = [str(a) for a in accelerators]
+        self._replica_gpu_cache = replica_gpu_cache
+
         running_model_info = {parse_replica_model_uid(k)[0]: v for k, v in ret.items()}
         # add replica count
         for k, v in running_model_info.items():
