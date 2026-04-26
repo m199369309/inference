@@ -349,7 +349,12 @@ class RESTfulAPI(CancelMixin):
             )
 
         config = Config(
-            app=self._app, host=self._host, port=self._port, log_config=logging_conf
+            app=self._app,
+            host=self._host,
+            port=self._port,
+            log_config=logging_conf,
+            proxy_headers=True,
+            forwarded_allow_ips="*",
         )
         server = Server(config)
         server.run()
