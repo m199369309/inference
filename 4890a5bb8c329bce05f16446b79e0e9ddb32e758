@@ -1,0 +1,28 @@
+xinference/api/restful_api.py
+  40bc7be1aa71f9fb 352-357
+xinference/ui/web/ui/src/components/fetcher.js
+  40bc7be1aa71f9fb 19-25,27
+xinference/ui/web/ui/src/components/utils.js
+  40bc7be1aa71f9fb 3,5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.10",
+  "base_commit_sha": "4890a5bb8c329bce05f16446b79e0e9ddb32e758",
+  "prompts": {
+    "40bc7be1aa71f9fb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0c5dfd9a-6967-4616-a6c9-5921c1a862a0",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 16,
+      "total_deletions": 8,
+      "accepted_lines": 59,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/8f4381d097fe838b9f44ab62241b9339ed5cc782f06308041f42b5ce841a04c1"
+    }
+  }
+}
