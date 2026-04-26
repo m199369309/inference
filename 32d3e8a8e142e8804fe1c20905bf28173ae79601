@@ -1,0 +1,26 @@
+xinference/core/metrics.py
+  4bcd671ec0e19328 383
+xinference/api/restful_api.py
+  4bcd671ec0e19328 279
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.10",
+  "base_commit_sha": "32d3e8a8e142e8804fe1c20905bf28173ae79601",
+  "prompts": {
+    "4bcd671ec0e19328": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "430130af-e3e5-4801-ad9c-352038dd95b3",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 2,
+      "accepted_lines": 611,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/d6c3c4d29d6e07ba9b01c06e814179311a3703bfd77874dd0a39967a985aebc3"
+    }
+  }
+}
