@@ -21,8 +21,6 @@ from typing import Any, Optional
 import xoscar as xo
 from xoscar import MainActorPoolType
 
-import xinference.core.xoscar_keepalive  # noqa: F401  TCP keepalive patch
-
 from ..core.worker import WorkerActor
 from ..device_utils import get_available_device_env_name, gpu_count
 
