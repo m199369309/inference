@@ -1,0 +1,24 @@
+xinference/core/metrics.py
+  4bcd671ec0e19328 245,266,287,312,329
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.10",
+  "base_commit_sha": "3824bdcceee9fd3b814c1079abd541ca344265bf",
+  "prompts": {
+    "4bcd671ec0e19328": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "430130af-e3e5-4801-ad9c-352038dd95b3",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 5,
+      "accepted_lines": 614,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/24d301c16e3784e7f60684905321f9a2844e111308ac6b9923d7bd49a2b694cf"
+    }
+  }
+}
