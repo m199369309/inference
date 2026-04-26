@@ -380,7 +380,7 @@ def launch_metrics_export_server(q, host=None, port=None):
     # empty HELP/TYPE headers on the Worker /metrics endpoint.
     for collector in list(REGISTRY.get_all()):
         if collector.name in _SUPERVISOR_ONLY_METRICS:
-            REGISTRY.deregister(collector)
+            REGISTRY.deregister(collector.name)
 
     app = FastAPI()
     app.add_route("/metrics", metrics)

@@ -276,7 +276,7 @@ class RESTfulAPI(CancelMixin):
             # module level in metrics.py.
             for collector in list(REGISTRY.get_all()):
                 if not collector.name.startswith("xinference:"):
-                    REGISTRY.deregister(collector)
+                    REGISTRY.deregister(collector.name)
             self._app.add_middleware(MetricsMiddleware)
             self._app.include_router(self._router)
             self._app.add_route("/metrics", metrics)
