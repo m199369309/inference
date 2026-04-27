@@ -1,0 +1,24 @@
+setup.cfg
+  076b4a0789b76e60 109,160
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.10",
+  "base_commit_sha": "b6a29a2fbbad471568ff99c4dceb7d95c9279bea",
+  "prompts": {
+    "076b4a0789b76e60": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c5c4c3a5-70a4-446a-922d-07151aaebdcb",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 2,
+      "accepted_lines": 2,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/17dd23aa818a658dcd3ab547afcb05b58e35d8c7f3d7cfc3d9e307cb84f17515"
+    }
+  }
+}
