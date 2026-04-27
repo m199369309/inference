@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import asyncio
+import json
 import logging
 import os
 import pathlib
@@ -53,6 +54,7 @@ from ..constants import (
     XINFERENCE_DISABLE_METRICS,
     XINFERENCE_ENABLE_VIRTUAL_ENV,
     XINFERENCE_HEALTH_CHECK_INTERVAL,
+    XINFERENCE_HOME,
     XINFERENCE_MODEL_DOWNLOAD_WORKERS,
     XINFERENCE_STATUS_GATHER_TIMEOUT,
     XINFERENCE_STATUS_REPORT_MULTIPLIER,
@@ -444,6 +446,13 @@ class WorkerActor(xo.StatelessActor):
             # Do not crash the worker if supervisor is down, auto re-connect later
             logger.error(f"cannot connect to supervisor", exc_info=True)
 
+        # §4.3: If connected as fresh worker, try to recover persisted models
+        if self._supervisor_ref is not None and not self._model_uid_to_launch_args:
+            try:
+                await self._try_recover_models()
+            except Exception:
+                logger.error("Model recovery failed", exc_info=True)
+
         if not XINFERENCE_DISABLE_HEALTH_CHECK:
             from ..isolation import Isolation
 
@@ -617,6 +626,133 @@ class WorkerActor(xo.StatelessActor):
         from ..device_utils import gpu_count
 
         return gpu_count()
+
+    # §4.3: Worker-side launch_args persistence for auto-recovery.
+    def _get_recovery_file_path(self) -> str:
+        safe_addr = self.address.replace(":", "_").replace("/", "_")
+        recovery_dir = os.path.join(XINFERENCE_HOME, "worker_recovery", safe_addr)
+        return os.path.join(recovery_dir, "models.json")
+
+    def _persist_launch_args(self):
+        """Atomically persist current launch_args to disk. Failures are non-blocking."""
+        try:
+            filepath = self._get_recovery_file_path()
+            os.makedirs(os.path.dirname(filepath), exist_ok=True)
+            # Serialize: filter out non-serializable values
+            data = {}
+            for uid, args in self._model_uid_to_launch_args.items():
+                serializable_args = {}
+                for k, v in args.items():
+                    try:
+                        json.dumps(v)
+                        serializable_args[k] = v
+                    except (TypeError, ValueError):
+                        serializable_args[k] = str(v)
+                data[uid] = serializable_args
+            tmp_path = filepath + ".tmp"
+            with open(tmp_path, "w") as f:
+                json.dump(data, f, ensure_ascii=False)
+            os.rename(tmp_path, filepath)
+            logger.debug(
+                "Persisted launch_args for %d models to %s", len(data), filepath
+            )
+        except Exception:
+            logger.warning(
+                "Failed to persist launch_args, auto-recovery may not work",
+                exc_info=True,
+            )
+
+    def _remove_persisted_launch_args(self, model_uid: str):
+        """Remove a single model from the persisted launch_args file."""
+        try:
+            filepath = self._get_recovery_file_path()
+            if not os.path.exists(filepath):
+                return
+            with open(filepath, "r") as f:
+                data = json.load(f)
+            if model_uid in data:
+                del data[model_uid]
+                tmp_path = filepath + ".tmp"
+                with open(tmp_path, "w") as f:
+                    json.dump(data, f, ensure_ascii=False)
+                os.rename(tmp_path, filepath)
+        except Exception:
+            logger.warning("Failed to update persisted launch_args", exc_info=True)
+
+    def _load_persisted_launch_args(self) -> dict:
+        """Load persisted launch_args. Returns empty dict on any error."""
+        try:
+            filepath = self._get_recovery_file_path()
+            if not os.path.exists(filepath):
+                return {}
+            with open(filepath, "r") as f:
+                return json.load(f)
+        except Exception:
+            logger.warning(
+                "Failed to load persisted launch_args, treating as fresh worker",
+                exc_info=True,
+            )
+            return {}
+
+    async def _try_recover_models(self):
+        """
+        After connecting to supervisor as a fresh worker, attempt to recover
+        previously running models using persisted launch_args.
+        Cross-validates with supervisor to avoid rebuilding manually deleted models.
+        """
+        persisted = self._load_persisted_launch_args()
+        if not persisted:
+            return
+
+        logger.info(
+            "Found %d persisted model(s) for recovery, validating with supervisor...",
+            len(persisted),
+        )
+        supervisor_ref = self._supervisor_ref
+        if supervisor_ref is None:
+            logger.warning("No supervisor ref available, skipping model recovery")
+            return
+
+        recovered = 0
+        skipped = 0
+        failed = 0
+        for model_uid, launch_args in persisted.items():
+            try:
+                # Cross-validate: check if supervisor still knows about this model
+                origin_uid, _ = parse_replica_model_uid(model_uid)
+                try:
+                    model_info = await supervisor_ref.describe_model(origin_uid)
+                except Exception:
+                    model_info = None
+                if model_info is None:
+                    logger.info(
+                        "Model %s no longer registered in supervisor, skipping recovery",
+                        model_uid,
+                    )
+                    skipped += 1
+                    continue
+
+                logger.info("Recovering model %s ...", model_uid)
+                # Remove non-callable keys that may have been serialized
+                launch_args.pop("launch_ts", None)
+                await self.launch_builtin_model(**launch_args)
+                recovered += 1
+            except Exception:
+                logger.error(
+                    "Failed to recover model %s, continuing with others",
+                    model_uid,
+                    exc_info=True,
+                )
+                failed += 1
+
+        logger.info(
+            "Model recovery complete: recovered=%d, skipped=%d, failed=%d",
+            recovered,
+            skipped,
+            failed,
+        )
+        # Update persisted file to reflect current state
+        self._persist_launch_args()
 
     @log_sync(logger=logger)
     def get_model_count(self) -> int:
@@ -1971,6 +2107,8 @@ class WorkerActor(xo.StatelessActor):
                 model_uid, MODEL_ACTOR_AUTO_RECOVER_LIMIT
             )
             self._model_uid_to_launch_args[model_uid] = launch_args
+            # §4.3: Persist for auto-recovery on restart
+            self._persist_launch_args()
         finally:
             del self._model_uid_launching_guard[model_uid]
 
@@ -2141,6 +2279,8 @@ class WorkerActor(xo.StatelessActor):
             self._model_uid_to_addr.pop(model_uid, None)
             self._model_uid_to_recover_count.pop(model_uid, None)
             self._model_uid_to_launch_args.pop(model_uid, None)
+            # §4.3: Remove from persisted recovery file
+            self._remove_persisted_launch_args(model_uid)
 
             if is_model_die:
                 status = LaunchStatus.ERROR.name
@@ -2233,6 +2373,7 @@ class WorkerActor(xo.StatelessActor):
         Heartbeat is sent every interval, full status is sent every N intervals.
         """
         report_count = 0
+        _heartbeat_fail_count = 0
         while True:
             try:
                 # Always send heartbeat for liveness detection
@@ -2243,6 +2384,7 @@ class WorkerActor(xo.StatelessActor):
                     await self.report_status()
 
                 report_count += 1
+                _heartbeat_fail_count = 0  # reset on success
             except asyncio.CancelledError:  # pragma: no cover
                 break
             except RuntimeError as ex:  # pragma: no cover
@@ -2253,7 +2395,18 @@ class WorkerActor(xo.StatelessActor):
             except (
                 Exception
             ) as ex:  # pragma: no cover  # noqa: E722  # nosec  # pylint: disable=bare-except
-                logger.error(f"Failed to upload node info: {ex}")
+                _heartbeat_fail_count += 1
+                # §4.4: Log exception type and full traceback.
+                # Print full traceback on 1st failure and every 10th consecutive failure
+                # to avoid log bloat during prolonged outages.
+                logger.error(
+                    "Failed to upload node info: %s(%s)",
+                    type(ex).__name__,
+                    ex or "(empty message)",
+                    exc_info=(
+                        _heartbeat_fail_count == 1 or _heartbeat_fail_count % 10 == 0
+                    ),
+                )
             try:
                 await asyncio.sleep(XINFERENCE_HEALTH_CHECK_INTERVAL)
             except asyncio.CancelledError:  # pragma: no cover

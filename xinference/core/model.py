@@ -18,6 +18,7 @@ import inspect
 import json
 import os
 import queue
+import sys
 import time
 import types
 import uuid
@@ -495,7 +496,37 @@ class ModelActor(xo.StatelessActor, CancelMixin):
         await worker_ref.update_model_status(
             self._replica_model_uid, last_error=error_message
         )
-        os._exit(1)
+        # §4.1: Graceful cleanup instead of os._exit(1).
+        # 1) Stop model to release underlying resources (with timeout guard)
+        try:
+            await asyncio.wait_for(self.stop(), timeout=30)
+        except asyncio.TimeoutError:
+            logger.warning(
+                "Model stop() timed out after 30s for %s, proceeding with cleanup",
+                self.model_uid(),
+            )
+        except Exception:
+            logger.warning(
+                "Model stop() failed for %s, proceeding with cleanup",
+                self.model_uid(),
+                exc_info=True,
+            )
+        # 2) Delete model reference to allow GC to reclaim GPU memory
+        try:
+            del self._model
+        except AttributeError:
+            pass
+        # 3) Release PyTorch GPU cache
+        try:
+            import torch
+
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+        except Exception:
+            pass
+        # 4) Use sys.exit(1) instead of os._exit(1) so that Python cleanup hooks
+        #    run and xoscar can detect the sub-process exit, triggering recover_sub_pool.
+        sys.exit(1)
 
     def _to_generator(self, output_type: str, gen: types.GeneratorType):
         start_time = time.time()
