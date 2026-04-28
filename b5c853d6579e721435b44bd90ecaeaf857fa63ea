@@ -1,0 +1,40 @@
+xinference/ui/web/ui/src/locales/ja.json
+  217e2384b5357a30 7,291-311
+xinference/ui/web/ui/src/locales/zh.json
+  217e2384b5357a30 7,291-311
+xinference/ui/web/ui/src/locales/ko.json
+  217e2384b5357a30 7,291-311
+xinference/ui/web/ui/src/components/MenuSide.js
+  217e2384b5357a30 8,84-89
+xinference/ui/web/ui/src/router/index.js
+  217e2384b5357a30 11,68-71
+xinference/ui/web/ui/src/scenes/monitoring/index.js
+  217e2384b5357a30 1-53
+xinference/ui/web/ui/src/locales/en.json
+  217e2384b5357a30 7,297-317
+xinference/ui/web/ui/src/components/grafanaUtils.js
+  217e2384b5357a30 1-50
+xinference/api/routers/admin.py
+  217e2384b5357a30 257-269,282
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.10",
+  "base_commit_sha": "b5c853d6579e721435b44bd90ecaeaf857fa63ea",
+  "prompts": {
+    "217e2384b5357a30": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "253179f3-9230-4a5a-8477-f487edcf2d80",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 365,
+      "total_deletions": 89,
+      "accepted_lines": 220,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/899fa7d6527bb7969cc7a2ce7a8bec0469b30e2e72602fceefad0bef644d64a9"
+    }
+  }
+}
