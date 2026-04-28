@@ -25,7 +25,12 @@ export const buildGrafanaUrl = (config, theme = 'light') => {
 /**
  * Build Grafana single-panel embed URL (for model detail pages).
  */
-export const buildGrafanaPanelUrl = (config, panelId, modelName, theme = 'light') => {
+export const buildGrafanaPanelUrl = (
+  config,
+  panelId,
+  modelName,
+  theme = 'light'
+) => {
   const {
     grafana_url,
     grafana_dashboard_uid,
