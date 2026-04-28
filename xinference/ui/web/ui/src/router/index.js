@@ -8,6 +8,7 @@ import ClusterInfo from '../scenes/cluster_info'
 import LaunchModel from '../scenes/launch_model'
 import Login from '../scenes/login/login'
 import RegisterModel from '../scenes/register_model'
+import Monitoring from '../scenes/monitoring'
 import RunningModels from '../scenes/running_models'
 
 const LoginAuth = () => {
@@ -63,6 +64,10 @@ const routes = [
       {
         path: 'cluster_info',
         element: <ClusterInfo />,
+      },
+      {
+        path: 'monitoring',
+        element: <Monitoring />,
       },
     ],
   },
