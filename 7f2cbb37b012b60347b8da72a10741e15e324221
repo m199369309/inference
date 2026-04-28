@@ -1,0 +1,24 @@
+xinference/ui/web/ui/src/router/index.js
+  217e2384b5357a30 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.10",
+  "base_commit_sha": "7f2cbb37b012b60347b8da72a10741e15e324221",
+  "prompts": {
+    "217e2384b5357a30": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "253179f3-9230-4a5a-8477-f487edcf2d80",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 51,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/9988f8e054bb537d06db94e4925d514f71f94f97b2109afcbda2a0d3d566383a"
+    }
+  }
+}
