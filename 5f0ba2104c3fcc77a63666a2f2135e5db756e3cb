@@ -1,0 +1,33 @@
+xinference/model/rerank/__init__.py
+  644da53ef4ed04c9 81-82,95-100
+xinference/model/embedding/__init__.py
+  644da53ef4ed04c9 81-82,95-100
+xinference/model/embedding/sentence_transformers/core.py
+  644da53ef4ed04c9 577-578,580-593,597-604
+xinference/model/embedding/model_spec.json
+  644da53ef4ed04c9 1457-1459,1461-1462
+xinference/model/embedding/vllm/core.py
+  644da53ef4ed04c9 302-306
+xinference/model/rerank/sentence_transformers/core.py
+  644da53ef4ed04c9 707-708,710-726,730-737
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.10",
+  "base_commit_sha": "5f0ba2104c3fcc77a63666a2f2135e5db756e3cb",
+  "prompts": {
+    "644da53ef4ed04c9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ea96f357-95cd-46ee-9f93-17754699ece8",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 79,
+      "overriden_lines": 0
+    }
+  }
+}
