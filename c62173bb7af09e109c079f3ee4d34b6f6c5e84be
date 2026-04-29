@@ -1,0 +1,36 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.10",
+  "base_commit_sha": "c62173bb7af09e109c079f3ee4d34b6f6c5e84be",
+  "prompts": {
+    "217e2384b5357a30": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "253179f3-9230-4a5a-8477-f487edcf2d80",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 55,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/191edaab2b874c7030fc75127bd7cf00ba2cd8735fd591e41b98393483abd050"
+    },
+    "8c7260dabde9647b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "de89226f-5f35-4e8b-9612-517f1c0eeb14",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/1b1d28e2aad2508d002b9569c3c339cf8ee7c75e06dd73eb5462c80ee35360f2"
+    }
+  }
+}
