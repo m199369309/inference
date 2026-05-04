@@ -1,0 +1,50 @@
+dashboard/dcgm-custom-metrics.csv
+  d2982c8974b629da 1-48
+dashboard/README.md
+  d2982c8974b629da 1-75
+dashboard/xinference-grafana-dashboard-ja.json
+  d2982c8974b629da 1-4668
+dashboard/dcgm-exporter.yml
+  d2982c8974b629da 1-33
+dashboard/README_zh-CN.md
+  d2982c8974b629da 1-75
+dashboard/xinference-grafana-dashboard-zh-CN.json
+  d2982c8974b629da 1-4668
+dashboard/xinference-grafana-dashboard-ko.json
+  d2982c8974b629da 1-4668
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.11",
+  "base_commit_sha": "c0730fdac58c3b615887fc1ddf09f0e53da4e2fa",
+  "prompts": {
+    "217e2384b5357a30": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "253179f3-9230-4a5a-8477-f487edcf2d80",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 55,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/191edaab2b874c7030fc75127bd7cf00ba2cd8735fd591e41b98393483abd050"
+    },
+    "d2982c8974b629da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2f578c81-6d3c-4ff6-a84c-d5ae59754d27",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 14085,
+      "total_deletions": 0,
+      "accepted_lines": 18903,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/87ceb202c7c25a891c2e05163f582c2b1fa6baa56e27322c8f987103bf46f2ff"
+    }
+  }
+}
