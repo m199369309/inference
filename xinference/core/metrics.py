@@ -14,6 +14,8 @@
 
 import asyncio
 import logging
+import platform
+import sys
 from collections import defaultdict
 from typing import Any, Dict, Set, Tuple
 
@@ -138,6 +140,14 @@ model_gpu_binding_gauge = Gauge(
     "xinference:model_gpu_binding",
     "Per-replica GPU binding (one series per GPU per replica, value=1).",
 )
+build_info_gauge = Gauge(
+    "xinference:build_info",
+    "Xinference build information (value=1).",
+)
+config_info_gauge = Gauge(
+    "xinference:config_info",
+    "Xinference configuration information (value=1).",
+)
 
 # ---------------------------------------------------------------------------
 # Supervisor-only metric names — removed from Worker Registry at startup
@@ -173,13 +183,73 @@ def record_metrics(name, op, kwargs):
         getattr(collector, op)(**kwargs)
 
 
+def set_build_info(
+    cluster: str = "",
+    role: str = "",
+    worker_address: str = "",
+    supervisor_address: str = "",
+) -> None:
+    """Set xinference:build_info gauge with version and runtime information."""
+    from xinference import __version__
+
+    labels = {
+        "version": __version__,
+        "python_version": platform.python_version(),
+    }
+    if cluster:
+        labels["cluster"] = cluster
+    if role:
+        labels["xinference_role"] = role
+    if worker_address:
+        labels["worker_address"] = worker_address
+    if supervisor_address:
+        labels["supervisor_address"] = supervisor_address
+    build_info_gauge.set(labels, 1)
+
+
+def set_config_info(
+    xinference_home: str,
+    role: str,
+    cluster: str = "",
+    worker_address: str = "",
+    supervisor_address: str = "",
+) -> None:
+    """Set xinference:config_info gauge with configuration information."""
+    labels = {
+        "xinference_home": xinference_home,
+        "xinference_role": role,
+    }
+    if cluster:
+        labels["cluster"] = cluster
+    if worker_address:
+        labels["worker_address"] = worker_address
+    if supervisor_address:
+        labels["supervisor_address"] = supervisor_address
+    config_info_gauge.set(labels, 1)
+
+
 def update_cluster_metrics(
     cluster_data: Dict[str, Any],
     models_data: Dict[str, Dict[str, Any]],
+    supervisor_address: str = "",
 ) -> None:
     """Refresh all Supervisor-side Prometheus gauges from in-memory data."""
     global _prev_worker_labels, _prev_gpu_labels
     global _prev_model_labels, _prev_status_labels, _prev_gpu_binding_labels
+
+    # --- Build info (set once, labels are static) ---
+    cluster_name = cluster_data.get("cluster", "")
+    set_build_info(cluster=cluster_name, role="supervisor", supervisor_address=supervisor_address)
+
+    # --- Config info for supervisor ---
+    from xinference.constants import XINFERENCE_HOME as _xf_home
+
+    set_config_info(
+        xinference_home=_xf_home,
+        role="supervisor",
+        cluster=cluster_name,
+        supervisor_address=supervisor_address,
+    )
 
     # --- Supervisor uptime ---
     supervisor_uptime.set({}, cluster_data.get("uptime", 0))

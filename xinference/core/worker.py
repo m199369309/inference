@@ -73,7 +73,7 @@ from ..types import PeftModelConfig
 from ..utils import get_pip_config_args, get_real_path
 from .cache_tracker import CacheTrackerActor
 from .event import Event, EventCollectorActor, EventType
-from .metrics import launch_metrics_export_server, record_metrics
+from .metrics import launch_metrics_export_server, record_metrics, set_build_info, set_config_info
 from .resource import gather_node_info
 from .status_guard import StatusGuardActor
 from .utils import (
@@ -454,6 +454,16 @@ class WorkerActor(xo.StatelessActor):
                 self._periodical_report_status(), loop=self._isolation.loop
             )
         logger.info(f"Xinference worker {self.address} started")
+
+        # Report build/config info for this worker
+        from xinference.constants import XINFERENCE_HOME as _xf_home
+
+        set_build_info(role="worker", worker_address=self.address)
+        set_config_info(
+            xinference_home=_xf_home,
+            role="worker",
+            worker_address=self.address,
+        )
 
         # Windows does not have signal handler
         if os.name != "nt":
