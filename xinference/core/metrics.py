@@ -15,7 +15,6 @@
 import asyncio
 import logging
 import platform
-import sys
 from collections import defaultdict
 from typing import Any, Dict, Set, Tuple
 
@@ -239,7 +238,9 @@ def update_cluster_metrics(
 
     # --- Build info (set once, labels are static) ---
     cluster_name = cluster_data.get("cluster", "")
-    set_build_info(cluster=cluster_name, role="supervisor", supervisor_address=supervisor_address)
+    set_build_info(
+        cluster=cluster_name, role="supervisor", supervisor_address=supervisor_address
+    )
 
     # --- Config info for supervisor ---
     from xinference.constants import XINFERENCE_HOME as _xf_home

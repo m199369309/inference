@@ -73,7 +73,12 @@ from ..types import PeftModelConfig
 from ..utils import get_pip_config_args, get_real_path
 from .cache_tracker import CacheTrackerActor
 from .event import Event, EventCollectorActor, EventType
-from .metrics import launch_metrics_export_server, record_metrics, set_build_info, set_config_info
+from .metrics import (
+    launch_metrics_export_server,
+    record_metrics,
+    set_build_info,
+    set_config_info,
+)
 from .resource import gather_node_info
 from .status_guard import StatusGuardActor
 from .utils import (

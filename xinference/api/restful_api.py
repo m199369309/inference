@@ -380,7 +380,11 @@ class RESTfulAPI(CancelMixin):
                 supervisor_ref = await self._get_supervisor_ref()
                 cluster_data = await supervisor_ref.get_cluster_metrics_data()
                 models_data = await supervisor_ref.list_models()
-                update_cluster_metrics(cluster_data, models_data, supervisor_address=self._supervisor_address)
+                update_cluster_metrics(
+                    cluster_data,
+                    models_data,
+                    supervisor_address=self._supervisor_address,
+                )
             except Exception:
                 logger.warning("Failed to update cluster metrics", exc_info=True)
 
