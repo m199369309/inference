@@ -1,0 +1,36 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.11",
+  "base_commit_sha": "0d41a2688f6005bfd8b8e217c77b3d8a67b96bcf",
+  "prompts": {
+    "217e2384b5357a30": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "253179f3-9230-4a5a-8477-f487edcf2d80",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 55,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/191edaab2b874c7030fc75127bd7cf00ba2cd8735fd591e41b98393483abd050"
+    },
+    "d2982c8974b629da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2f578c81-6d3c-4ff6-a84c-d5ae59754d27",
+        "model": "claude-opus-4.6"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 4819,
+      "total_deletions": 1,
+      "accepted_lines": 4818,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/834ce88c7ae4c126a50727ff24dd5abdcbe9fcbba75310fdc4f94e9847a0f376"
+    }
+  }
+}
