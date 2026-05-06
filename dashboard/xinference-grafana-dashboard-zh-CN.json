@@ -3047,7 +3047,7 @@
       },
       "targets": [
         {
-          "expr": "1 - avg(rate(node_cpu_seconds_total{instance=~\"$supervisor_instance\", mode=\"idle\"}[5m])) by (instance) * on (address) group_left(supervisor_address) (xinference:build_info{xinference_role=\"supervisor\", cluster =~\"$cluster\"})",
+          "expr": "(1 - avg(rate(node_cpu_seconds_total{instance=~\"$supervisor_instance\", mode=\"idle\"}[5m])) by (address)) * on (address) group_left(supervisor_address) (xinference:build_info{xinference_role=\"supervisor\", cluster =~\"$cluster\"})",
           "legendFormat": "{{supervisor_address}} CPU Usage",
           "refId": "A"
         }
@@ -3494,7 +3494,7 @@
       },
       "targets": [
         {
-          "expr": "node_memory_SwapTotal_bytes{instance=~\"$supervisor_instance\"} - node_memory_SwapFree_bytes{instance=~\"$supervisor_instance\"} * on (address) group_left(supervisor_address) (xinference:build_info{xinference_role=\"supervisor\", cluster =~\"$cluster\"})",
+          "expr": "(node_memory_SwapTotal_bytes{instance=~\"$supervisor_instance\"} - node_memory_SwapFree_bytes{instance=~\"$supervisor_instance\"}) * on (address) group_left(supervisor_address) (xinference:build_info{xinference_role=\"supervisor\", cluster =~\"$cluster\"})",
           "legendFormat": "{{supervisor_address}} Swap Used",
           "refId": "A"
         }
@@ -3790,7 +3790,7 @@
       },
       "targets": [
         {
-          "expr": "1 - avg(rate(node_cpu_seconds_total{instance=~\"$worker_instance\", mode=\"idle\"}[5m])) by (instance) * on (address) group_left(worker_address) (xinference:build_info{xinference_role=\"worker\", cluster =~\"$cluster\"})",
+          "expr": "(1 - avg(rate(node_cpu_seconds_total{instance=~\"$worker_instance\", mode=\"idle\"}[5m])) by (address)) * on (address) group_left(worker_address) (xinference:build_info{xinference_role=\"worker\", cluster =~\"$cluster\"})",
           "legendFormat": "{{worker_address}} CPU Usage",
           "refId": "A"
         }
@@ -4335,7 +4335,7 @@
       },
       "targets": [
         {
-          "expr": "node_memory_SwapTotal_bytes{instance=~\"$worker_instance\"} - node_memory_SwapFree_bytes{instance=~\"$worker_instance\"} * on (address) group_left(worker_address) (xinference:build_info{xinference_role=\"worker\", cluster =~\"$cluster\"})",
+          "expr": "(node_memory_SwapTotal_bytes{instance=~\"$worker_instance\"} - node_memory_SwapFree_bytes{instance=~\"$worker_instance\"}) * on (address) group_left(worker_address) (xinference:build_info{xinference_role=\"worker\", cluster =~\"$cluster\"})",
           "legendFormat": "{{worker_address}} Swap Used",
           "refId": "A"
         }
