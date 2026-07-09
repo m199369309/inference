@@ -1,0 +1,29 @@
+xinference/model/llm/tests/test_system_role_order.py
+  770735435f111234 60-145
+xinference/model/llm/llm_family.py
+  770735435f111234 63-70
+xinference/api/tests/test_system_role_order.py
+  770735435f111234 28
+xinference/model/llm/utils.py
+  770735435f111234 73-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "002bc4aea33278a01425f5b96f4f064730332334",
+  "prompts": {
+    "770735435f111234": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2480253c-5422-4075-8ae5-7e5c076f9b02",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 28,
+      "total_deletions": 6,
+      "accepted_lines": 97,
+      "overriden_lines": 0
+    }
+  }
+}
