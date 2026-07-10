@@ -1,0 +1,34 @@
+xinference/api/tests/test_embedding_truncate.py
+  770735435f111234 1-73
+xinference/core/worker.py
+  770735435f111234 785-791,793,796-797,801-809,812-825,828-856,1419-1424,3861-3867
+xinference/model/embedding/core.py
+  770735435f111234 48-55,287-289,322-329,385-443
+xinference/api/schemas/requests.py
+  770735435f111234 31-35
+xinference/core/tests/test_worker.py
+  770735435f111234 1457-1462,1498-1777
+xinference/model/embedding/sentence_transformers/tests/test_truncate_prompt_tokens.py
+  770735435f111234 1-162
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "f935e980ef3d9705ffb8e6f6c53e9bb3dc87d110",
+  "prompts": {
+    "770735435f111234": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2480253c-5422-4075-8ae5-7e5c076f9b02",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 700,
+      "total_deletions": 51,
+      "accepted_lines": 674,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/d5849b5d88a6b4fc4eef4205bf58be152922cd9a22e0075c172ab78d08504e4e"
+    }
+  }
+}
