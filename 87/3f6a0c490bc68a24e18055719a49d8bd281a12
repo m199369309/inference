@@ -1,0 +1,26 @@
+xinference/core/worker.py
+  770735435f111234 62,3113
+xinference/constants.py
+  770735435f111234 275-282
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "873f6a0c490bc68a24e18055719a49d8bd281a12",
+  "prompts": {
+    "770735435f111234": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2480253c-5422-4075-8ae5-7e5c076f9b02",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 10,
+      "total_deletions": 8,
+      "accepted_lines": 10,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/c0a63829b142b3d1056a28141438505669295fdde4938ec7649ca9d79beede98"
+    }
+  }
+}
