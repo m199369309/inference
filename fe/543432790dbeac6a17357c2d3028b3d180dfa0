@@ -1,0 +1,26 @@
+xinference/model/embedding/sentence_transformers/tests/test_truncate_prompt_tokens.py
+  004b9aa4e2d60cb4 238-289
+xinference/model/embedding/core.py
+  004b9aa4e2d60cb4 412-414,457-461,464-468
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "fe543432790dbeac6a17357c2d3028b3d180dfa0",
+  "prompts": {
+    "004b9aa4e2d60cb4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "85a9fa06-6c7f-48fa-a6cd-0c82ed0168db",
+        "model": "<synthetic>"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 1802,
+      "total_deletions": 17,
+      "accepted_lines": 1802,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/28ba9e7de8ad00cf2946c608eeca74c04132d47a8e56b693aac31e62660e7e1d"
+    }
+  }
+}
