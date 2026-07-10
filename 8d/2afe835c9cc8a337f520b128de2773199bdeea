@@ -1,0 +1,29 @@
+xinference/core/supervisor.py
+  159bc1cbe4d8f3b4 2566-2638
+xinference/client/tests/test_client.py
+  159bc1cbe4d8f3b4 548-620
+xinference/client/tests/test_async_client.py
+  159bc1cbe4d8f3b4 620-650,652-657,659-693
+xinference/core/worker.py
+  159bc1cbe4d8f3b4 318-341
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "8d2afe835c9cc8a337f520b128de2773199bdeea",
+  "prompts": {
+    "159bc1cbe4d8f3b4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3774d71f-422e-4e07-b0f4-0acb8a426b0d",
+        "model": "qwen3.7-max"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 171,
+      "total_deletions": 3,
+      "accepted_lines": 167,
+      "overriden_lines": 0
+    }
+  }
+}
