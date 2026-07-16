@@ -1,0 +1,26 @@
+monitor/metrics/README.md
+  7165db1896f79591 44-51,155,170,186,193-209
+monitor/metrics/README_zh-CN.md
+  7165db1896f79591 44-51,155,170,186,193-209
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "304b072797cc805db57ebbba4e0e04ef03531330",
+  "prompts": {
+    "7165db1896f79591": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dd9e6674-b07d-47f6-9471-c40427ff0fd1",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 318,
+      "total_deletions": 6,
+      "accepted_lines": 318,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/a7db1004d85509669c5163b7b2f6cd9516d1b69fb91024f78a4b2b7c6bcba698"
+    }
+  }
+}
