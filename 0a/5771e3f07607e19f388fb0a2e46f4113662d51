@@ -1,0 +1,24 @@
+xinference/api/restful_api.py
+  5ba04273c7f23551 786,1017
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "0a5771e3f07607e19f388fb0a2e46f4113662d51",
+  "prompts": {
+    "5ba04273c7f23551": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "48a64dfd-fbfb-4111-bd03-3c8897f231f8",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 2,
+      "accepted_lines": 39552,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/0c8094b4f2d21f5a6e15102ad0eb4060bfcda470871c59aeef55e274e6b0a513"
+    }
+  }
+}
