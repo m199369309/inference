@@ -1,0 +1,32 @@
+frontend/src/components/pages/login/index.tsx
+  5ba04273c7f23551 31,137-161
+frontend/src/i18n/locales/en.ts
+  5ba04273c7f23551 620-621
+frontend/src/i18n/locales/zh.ts
+  5ba04273c7f23551 377-378
+frontend/src/i18n/locales/ko.ts
+  5ba04273c7f23551 613-614
+frontend/src/i18n/locales/ja.ts
+  5ba04273c7f23551 619-620
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.5",
+  "base_commit_sha": "97e4798cc05d78a00d4953464f8da7265e9ea018",
+  "prompts": {
+    "5ba04273c7f23551": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "48a64dfd-fbfb-4111-bd03-3c8897f231f8",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 39584,
+      "total_deletions": 1,
+      "accepted_lines": 39584,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/fca3b614f72eb3a8ef7576ab7a055af2ef76cb10bb754b3b38be999eb6691906"
+    }
+  }
+}
