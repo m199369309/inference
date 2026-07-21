@@ -1,0 +1,26 @@
+frontend/src/contexts/app-init.tsx
+  bf7c6c17dab16937 10,34
+frontend/src/components/pages/login/index.tsx
+  bf7c6c17dab16937 13,31,39-49,149,166
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "f235e5f203f2f9ae4debdb55305d1fbca5ec179e",
+  "prompts": {
+    "bf7c6c17dab16937": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5c6b1cd4-05b8-4339-a262-7658d6ffa7bb",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 17,
+      "total_deletions": 20,
+      "accepted_lines": 17,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/8f5d138410fc665e1a06d05a3844606d38d7d976520c04dd01ffa03f7f34ec92"
+    }
+  }
+}
