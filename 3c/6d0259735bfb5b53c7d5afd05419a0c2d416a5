@@ -1,0 +1,38 @@
+frontend/src/components/pages/monitor-config-dialog.tsx
+  cc0ed55611bc27e5 1-295
+frontend/src/i18n/locales/ko.ts
+  cc0ed55611bc27e5 284-291,315-337
+frontend/src/i18n/locales/en.ts
+  cc0ed55611bc27e5 290-297,321-343
+frontend/src/i18n/locales/ja.ts
+  cc0ed55611bc27e5 288-295,319-341
+frontend/src/types/services.ts
+  cc0ed55611bc27e5 17
+frontend/src/components/pages/monitor-center.tsx
+  cc0ed55611bc27e5 3,13,16-17,19,179-180,187-188,205-217,219-221,224,253,336-345,349-367,370,376-380
+frontend/src/constants/monitor.ts
+  cc0ed55611bc27e5 20-29
+frontend/src/i18n/locales/zh.ts
+  cc0ed55611bc27e5 279-286,310-332
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "3c6d0259735bfb5b53c7d5afd05419a0c2d416a5",
+  "prompts": {
+    "cc0ed55611bc27e5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b10db5d9-3fe6-46af-ae8d-1198fcbb0e59",
+        "model": "glm-5.2"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 494,
+      "total_deletions": 17,
+      "accepted_lines": 492,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/90b78677dbae1a6cff42a81289960525518fd820c4b7cf6587d16caecd0cd0cd"
+    }
+  }
+}
