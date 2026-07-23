@@ -1,0 +1,26 @@
+frontend/src/components/pages/monitor-config-dialog.tsx
+  65c2c02c8a7f72da 27,85-96,126-133,136
+xinference/api/tests/test_monitor_config_api.py
+  65c2c02c8a7f72da 167-223
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "8177d211bf48ad2e9535bea766f4e7b2f49fc5ec",
+  "prompts": {
+    "65c2c02c8a7f72da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6affa7ec-ad02-441d-a116-3660fbbe028b",
+        "model": "glm-5.2"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 80,
+      "total_deletions": 3,
+      "accepted_lines": 79,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/474ec12fbfeb25e7b75a078a045376c6961f820903667d303a66c474a573f160"
+    }
+  }
+}
