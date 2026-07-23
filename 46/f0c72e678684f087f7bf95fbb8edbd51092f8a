@@ -1,0 +1,30 @@
+frontend/src/types/services.ts
+  ae7b42c3ef44ea9a 18
+xinference/api/routers/admin.py
+  ae7b42c3ef44ea9a 264,300
+xinference/core/monitor_config_store.py
+  ae7b42c3ef44ea9a 20,140-153
+frontend/src/components/pages/monitor-center.tsx
+  ae7b42c3ef44ea9a 179,209-212,214-215,314,321-347,360-385,387-402
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.0",
+  "base_commit_sha": "46f0c72e678684f087f7bf95fbb8edbd51092f8a",
+  "prompts": {
+    "ae7b42c3ef44ea9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "37bfe461-5681-4151-8cb3-82ed97bdc0ab",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 96,
+      "total_deletions": 56,
+      "accepted_lines": 95,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/925714323dcc4f79afc3203ca69d03227583e0cfef8eadd9d5766d54e0429040"
+    }
+  }
+}
