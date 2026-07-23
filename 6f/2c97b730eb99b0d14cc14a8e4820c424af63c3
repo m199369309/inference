@@ -1,0 +1,26 @@
+frontend/src/i18n/locales/ja.ts
+  65c2c02c8a7f72da 554,556
+frontend/src/i18n/locales/ko.ts
+  65c2c02c8a7f72da 548,550
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "6f2c97b730eb99b0d14cc14a8e4820c424af63c3",
+  "prompts": {
+    "65c2c02c8a7f72da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6affa7ec-ad02-441d-a116-3660fbbe028b",
+        "model": "glm-5.2"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 1372,
+      "total_deletions": 0,
+      "accepted_lines": 4,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/5068531ceb80a33926633e105d5efc46d2b7ccba29479f0ae7ab68e837a8f453"
+    }
+  }
+}
