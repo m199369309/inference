@@ -1,0 +1,24 @@
+frontend/src/components/pages/audit-center/index.tsx
+  9c202d6eb478daef 512,541
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.0",
+  "base_commit_sha": "58fe035a2caaa1db5d8777a2630f347453fbb86e",
+  "prompts": {
+    "9c202d6eb478daef": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd7c4625-c84e-4b85-bb34-a1d4c880394e",
+        "model": "glm-5.2"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 759,
+      "accepted_lines": 2,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/d4e19cb528bc0839fcf4c6c7d9225aeffdc0700ba3f14bd0360c8da057c815b9"
+    }
+  }
+}
