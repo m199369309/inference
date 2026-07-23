@@ -1,0 +1,24 @@
+frontend/src/components/pages/monitor-center.tsx
+  cc0ed55611bc27e5 213-219,359-368
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "dc6118545423f9f1e7cb4e6b8c2bace490904eae",
+  "prompts": {
+    "cc0ed55611bc27e5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b10db5d9-3fe6-46af-ae8d-1198fcbb0e59",
+        "model": "glm-5.2"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 406,
+      "total_deletions": 401,
+      "accepted_lines": 17,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/3f7a8837e829296b1b67b5cc470c2da66afced2e24ccfec818dae8b92a4aaab9"
+    }
+  }
+}
