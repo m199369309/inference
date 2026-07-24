@@ -1,0 +1,24 @@
+frontend/src/components/pages/monitor-config-dialog.tsx
+  301a4e977107a322 294
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "ea5d62ef99e11605e1bf89303cd6bda5288ec8b8",
+  "prompts": {
+    "301a4e977107a322": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76179371-004a-4d71-938a-34f192ab60a9",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/10c6f79e6f64ba00e0719cc85e54b1a4469c24a91bc222aa86787ad38a6ed9cf"
+    }
+  }
+}
