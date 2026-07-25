@@ -1,0 +1,27 @@
+xinference/api/frontend_static.py
+  329258ed19598e66 27-31,38,40,51-56,119-122,139-178,218,233,235-237,248-255,258-260,266
+xinference/api/tests/test_frontend_static.py
+  329258ed19598e66 21,262-387
+frontend/scripts/stage-export.mjs
+  329258ed19598e66 7,20-26,28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "9be3c7ea8a8db99730aca65caaddf73a8837568c",
+  "prompts": {
+    "329258ed19598e66": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "04b054d1-34ed-4b1d-81ca-2f34bb48089b",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 77,
+      "total_deletions": 15,
+      "accepted_lines": 210,
+      "overriden_lines": 0
+    }
+  }
+}
