@@ -1,0 +1,26 @@
+xinference/model/embedding/core.py
+  509883172ad18013 28,338-348
+xinference/model/embedding/tests/test_embedding_batch.py
+  509883172ad18013 1-115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "3ecd7244de43c479defe43bcb860b7feda60fd6e",
+  "prompts": {
+    "509883172ad18013": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3693dc41-0d49-41bf-9c27-adca9db8f566",
+        "model": "glm-5.2"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 306,
+      "total_deletions": 1,
+      "accepted_lines": 306,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/6509362b7ce4c64c578ff82f0cd2c90b5b65e90a202ef5fd1bc5207d4723bf8f"
+    }
+  }
+}
