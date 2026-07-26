@@ -1,0 +1,26 @@
+frontend/src/components/pages/log-center/index.tsx
+  11cb40175ac6dab6 40,78,103,225-227
+frontend/src/components/pages/log-center/log-toolbar.tsx
+  11cb40175ac6dab6 3-4,13-14,26-27,37-130,136-220
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "78795d33560eab7e899ab4052d54a8fdeb9b0f2a",
+  "prompts": {
+    "11cb40175ac6dab6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "029497ea-e66c-4c01-960d-0a14635c9c43",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 191,
+      "total_deletions": 571,
+      "accepted_lines": 191,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/adfae118ba1405e28c5b5d9558f42ceacbf85f3909dcf8e93e3424f1683531ee"
+    }
+  }
+}
