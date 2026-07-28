@@ -1,0 +1,24 @@
+frontend/src/hooks/use-menu-auth.ts
+  f01aa43f58a23aac 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "a2878e3a36abd9afa280ab5853858dbe698ac4e3",
+  "prompts": {
+    "f01aa43f58a23aac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9c0895ed-1fde-4138-88e2-d886bcb4bf6f",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/2688c05528e3a9556a2508d1c30007f6917f6ece9d321aa3b84af36786d8915c"
+    }
+  }
+}
