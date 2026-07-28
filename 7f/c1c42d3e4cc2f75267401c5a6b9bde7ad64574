@@ -1,0 +1,48 @@
+frontend/src/i18n/locales/zh.ts
+  f01aa43f58a23aac 109
+frontend/src/components/pages/launch-model/utils.tsx
+  f01aa43f58a23aac 32,937,959
+frontend/src/components/pages/launch-model/launch-dialog/launch-dialog.tsx
+  f01aa43f58a23aac 117
+frontend/src/i18n/locales/ja.ts
+  f01aa43f58a23aac 110
+frontend/src/i18n/locales/ko.ts
+  f01aa43f58a23aac 110
+frontend/src/contexts/i18n-context.tsx
+  f01aa43f58a23aac 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "7fc1c42d3e4cc2f75267401c5a6b9bde7ad64574",
+  "prompts": {
+    "2e789a6c25d4f9ae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "33922b69-edf7-4227-87f0-d4879431cb7d",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 1304,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/2d5f69d35c7a41cbafd55cdd5b78b8d0104305bc4be47b23071982acc64865fa"
+    },
+    "f01aa43f58a23aac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9c0895ed-1fde-4138-88e2-d886bcb4bf6f",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 8,
+      "total_deletions": 9,
+      "accepted_lines": 8,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/fdd6e96abfb2878c2a17311a7dd6131464332afeeeb69b223f6bfaa3086d3f83"
+    }
+  }
+}
