@@ -1,0 +1,24 @@
+frontend/src/components/auth/permission-guard.tsx
+  f01aa43f58a23aac 3,15,18-28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "3070c9118bc77ef08d7ff45508a31e497cdcf9e8",
+  "prompts": {
+    "f01aa43f58a23aac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9c0895ed-1fde-4138-88e2-d886bcb4bf6f",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 26,
+      "total_deletions": 4,
+      "accepted_lines": 50,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/5e560fec229653e6c724eb615fc126df26c01948071d72ce776350825b1381ae"
+    }
+  }
+}
