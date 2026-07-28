@@ -1,0 +1,26 @@
+xinference/core/worker.py
+  f01aa43f58a23aac 140-168,172-173,178,181,186-195,199,201-205,3059-3061,3106-3127
+xinference/core/tests/test_utils.py
+  f01aa43f58a23aac 654,669,671,687,690,696-697,704-707,709,725,728,732-733,743,745,747,749-751
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "d42cfbb8ca7117297787acdd1f858c99d7356848",
+  "prompts": {
+    "f01aa43f58a23aac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9c0895ed-1fde-4138-88e2-d886bcb4bf6f",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 97,
+      "total_deletions": 41,
+      "accepted_lines": 97,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/f2a43616fbffd9de98b4ee308a23f6ba355cf075e0d948329837b3c24c00ad49"
+    }
+  }
+}
