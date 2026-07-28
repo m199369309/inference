@@ -1,0 +1,26 @@
+frontend/src/app/register-model/[modelType]/page-client.tsx
+  f01aa43f58a23aac 4,13-17
+frontend/src/app/register-model/[modelType]/[modelName]/page-client.tsx
+  f01aa43f58a23aac 4,13-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "71879d5385abb08a875d1a4d392a58da53be5e76",
+  "prompts": {
+    "f01aa43f58a23aac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9c0895ed-1fde-4138-88e2-d886bcb4bf6f",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 12,
+      "total_deletions": 2,
+      "accepted_lines": 13,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/37a3470d83b68ee818494b50fbd853b1f2940b943883424067ee14236a552ddd"
+    }
+  }
+}
