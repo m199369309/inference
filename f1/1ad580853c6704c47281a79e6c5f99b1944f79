@@ -1,0 +1,34 @@
+frontend/src/i18n/locales/ko.ts
+  2e789a6c25d4f9ae 110
+frontend/src/i18n/locales/ja.ts
+  2e789a6c25d4f9ae 110
+frontend/src/i18n/locales/en.ts
+  2e789a6c25d4f9ae 110
+frontend/src/components/pages/launch-model/launch-dialog/launch-dialog.tsx
+  2e789a6c25d4f9ae 113
+frontend/src/i18n/locales/zh.ts
+  2e789a6c25d4f9ae 109
+frontend/src/components/pages/launch-model/utils.tsx
+  2e789a6c25d4f9ae 934-937,958-960
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "f11ad580853c6704c47281a79e6c5f99b1944f79",
+  "prompts": {
+    "2e789a6c25d4f9ae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "33922b69-edf7-4227-87f0-d4879431cb7d",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 411,
+      "total_deletions": 402,
+      "accepted_lines": 1316,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/b67aafd81811b6291e44e372afc53f5047265beac97e2dd7478ee59910d1266d"
+    }
+  }
+}
