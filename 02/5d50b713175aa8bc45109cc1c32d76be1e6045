@@ -1,0 +1,26 @@
+frontend/src/hooks/use-menu-auth.ts
+  2e789a6c25d4f9ae 27
+frontend/src/components/layout/sidebar.tsx
+  2e789a6c25d4f9ae 150,205,310
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "025d50b713175aa8bc45109cc1c32d76be1e6045",
+  "prompts": {
+    "2e789a6c25d4f9ae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "33922b69-edf7-4227-87f0-d4879431cb7d",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 1507,
+      "total_deletions": 201,
+      "accepted_lines": 1308,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/34bda3893538053e582462462c29bed929dc1a3d56e338d4af273e91d3d12373"
+    }
+  }
+}
