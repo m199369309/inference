@@ -1,0 +1,22 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "f19987a15feb4260a21a1ff01104aaaac5b65a74",
+  "prompts": {
+    "f01aa43f58a23aac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9c0895ed-1fde-4138-88e2-d886bcb4bf6f",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 62,
+      "accepted_lines": 2285,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/22923a7b82d788ca539a609d3ab00ccc596709cd5fa8e7f002cfc7e032e2a896"
+    }
+  }
+}
