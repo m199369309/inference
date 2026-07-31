@@ -1,0 +1,24 @@
+xinference/core/tests/test_launch_strategy.py
+  834cf81787894f61 86-93
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.6",
+  "base_commit_sha": "f183e641de3cf3f9e19e9e759a18225324486fc4",
+  "prompts": {
+    "834cf81787894f61": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634a76b6-9951-4b64-bdf0-781e083b940f",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 683,
+      "total_deletions": 675,
+      "accepted_lines": 15431,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/188a5eaef64a4c7a29a7960609b81b9e5fed879e73a15ecc091b85bb10a9e7d8"
+    }
+  }
+}
