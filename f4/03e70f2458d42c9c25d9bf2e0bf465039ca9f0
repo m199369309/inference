@@ -1,0 +1,28 @@
+xinference/core/tests/test_list_models.py
+  834cf81787894f61 2,41-42,175-243
+xinference/core/supervisor.py
+  834cf81787894f61 51,149-152,2425,2622,2860,3189-3206,3310-3312,3315-3321
+xinference/constants.py
+  834cf81787894f61 316-320
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.6",
+  "base_commit_sha": "f403e70f2458d42c9c25d9bf2e0bf465039ca9f0",
+  "prompts": {
+    "834cf81787894f61": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "634a76b6-9951-4b64-bdf0-781e083b940f",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 15540,
+      "total_deletions": 1,
+      "accepted_lines": 15536,
+      "overriden_lines": 1,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/e96945ade899d7ccf413563ac9dd63fb26dab8b2533808a641c586ac22707582"
+    }
+  }
+}
