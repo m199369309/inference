@@ -1,0 +1,24 @@
+pyproject.toml
+  ba47f4a1b2b19bdb 53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "b6a1b6c44a5c11db91f8e373f2f74887993fa464",
+  "prompts": {
+    "ba47f4a1b2b19bdb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1fd82a41-bc10-4e3f-90dd-2dae76ee0b88",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 1956,
+      "total_deletions": 0,
+      "accepted_lines": 1956,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/dad19a26f1a27458b27e9fc26ac60388b21e39708206854af8d75bfc21fc0e68"
+    }
+  }
+}
