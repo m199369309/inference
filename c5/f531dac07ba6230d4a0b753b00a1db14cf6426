@@ -1,0 +1,38 @@
+pyproject.toml
+  72880697dc9fab7d 53,282
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "c5f531dac07ba6230d4a0b753b00a1db14cf6426",
+  "prompts": {
+    "72880697dc9fab7d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7f73d7a8-5fa7-4af7-acb8-577a820af519",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 2,
+      "accepted_lines": 2,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/067fa91fc49ea2b632c5a79a7883c4a5cb29fc7dcad1165019f60c8b8129737d"
+    },
+    "ba47f4a1b2b19bdb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1fd82a41-bc10-4e3f-90dd-2dae76ee0b88",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 1955,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/da29f6ccaf188d08e0899165bb23c43f41eaa4474fd4c246daa2122e89d098b7"
+    }
+  }
+}
