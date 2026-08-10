@@ -1,0 +1,39 @@
+monitor/dashboard/README.md
+  50907f70fc3ac2b5 1,3,7-21,24,30,32,35,38-57,59,84-109,111-113,115-155,163-168
+monitor/dashboard/model-load/xinference-grafana-dashboard-model-load-ko.json
+  50907f70fc3ac2b5 1-835,838-857,860-884,887-911,913-1328
+monitor/metrics/README.md
+  50907f70fc3ac2b5 1-86,88-93,96-212,214-234
+monitor/dashboard/llm-slo/xinference-grafana-dashboard-llm-slo-en.json
+  50907f70fc3ac2b5 1-1033,1035-1038,1040-1043,1045-1070,1072-1075,1077-1080,1082-1378
+monitor/dashboard/model-load/xinference-grafana-dashboard-model-load-ja.json
+  50907f70fc3ac2b5 1-835,838-857,860-884,887-911,913-1328
+monitor/dashboard/model-load/xinference-grafana-dashboard-model-load-zh-CN.json
+  50907f70fc3ac2b5 1-835,838-857,860-884,887-911,913-1328
+monitor/dashboard/README_zh-CN.md
+  50907f70fc3ac2b5 3,7-21,24,32-33,35,38-57,59,84-109,111-113,115-155,163,165-168
+monitor/dashboard/host-resources/xinference-grafana-dashboard-host-resources-ja.json
+  50907f70fc3ac2b5 1-1774,1787-1796,1799-1805,1807-1809,1876-1888,1891-1893,1896-1902,1904-1906,1957,1972-2255
+monitor/dashboard/host-resources/xinference-grafana-dashboard-host-resources-zh-CN.json
+  50907f70fc3ac2b5 1-1774,1787-1796,1799-1805,1807-1809,1876-1888,1891-1893,1896-1902,1904-1906,1957,1972-2255
+monitor/dashboard/llm-slo/xinference-grafana-dashboard-llm-slo-ko.json
+  50907f70fc3ac2b5 1-1033,1035-1038,1040-1043,1045-1070,1072-1075,1077-1080,1082-1378
+monitor/dashboard/llm-slo/xinference-grafana-dashboard-llm-slo-zh-CN.json
+  50907f70fc3ac2b5 1-1033,1035-1038,1040-1043,1045-1070,1072-1075,1077-1080,1082-1378
+monitor/metrics/README_zh-CN.md
+  50907f70fc3ac2b5 1-86,88-93,96-212,214-234
+monitor/dashboard/model-load/xinference-grafana-dashboard-model-load-en.json
+  50907f70fc3ac2b5 1-835,838-857,860-884,887-911,913-1328
+monitor/dashboard/host-resources/xinference-grafana-dashboard-host-resources-ko.json
+  50907f70fc3ac2b5 1-1774,1787-1796,1799-1805,1807-1809,1876-1888,1891-1893,1896-1902,1904-1906,1957,1972-2255
+monitor/dashboard/llm-slo/xinference-grafana-dashboard-llm-slo-ja.json
+  50907f70fc3ac2b5 1-1033,1035-1038,1040-1043,1045-1070,1072-1075,1077-1080,1082-1378
+monitor/dashboard/host-resources/xinference-grafana-dashboard-host-resources-en.json
+  50907f70fc3ac2b5 1-1774,1787-1796,1799-1805,1807-1809,1876-1888,1891-1893,1896-1902,1904-1906,1957,1972-2255
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.17",
+  "base_commit_sha": "49880ac48adb642b69c2009b1414a6ca45d1d803",
+  "prompts": {}
+}
