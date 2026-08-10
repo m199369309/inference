@@ -1,7 +1,32 @@
+xinference/api/tests/test_system_role_order.py
+  770735435f111234 1-128
+xinference/model/llm/tests/test_system_role_order.py
+  770735435f111234 1-136
+xinference/model/llm/utils.py
+  770735435f111234 62-90
+xinference/model/llm/llm_family.py
+  770735435f111234 51-67,225-227
+xinference/api/restful_api.py
+  770735435f111234 2561-2573
 ---
 {
   "schema_version": "authorship/3.0.0",
-  "git_ai_version": "1.4.9",
+  "git_ai_version": "1.6.17",
   "base_commit_sha": "d19fcc08a5f5def3e7a683567c3d8a705ba210ca",
-  "prompts": {}
+  "prompts": {
+    "770735435f111234": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2480253c-5422-4075-8ae5-7e5c076f9b02",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 326,
+      "total_deletions": 0,
+      "accepted_lines": 326,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/ec82121b84e7097cf27087f48d3208adf10cb5334fdd75b9e1beafe29c9162b8"
+    }
+  }
 }
