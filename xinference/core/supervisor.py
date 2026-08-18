@@ -4927,6 +4927,7 @@ class SupervisorActor(xo.StatelessActor):
 
         payload["tokenizer_path"] = resolved_path
         payload.pop("tokenizer_asset_id", None)
+        payload.pop("tokenizer_asset_origin", None)
         payload.pop("tokenizer_asset_revision", None)
         payload.pop("tokenizer_asset_fingerprint", None)
         return payload
@@ -5103,10 +5104,18 @@ class SupervisorActor(xo.StatelessActor):
         try:
             if asset_id:
                 asset_validation = registry.validate_asset(asset_id)
+                configured_origin = str(config.get("tokenizer_asset_origin") or "")
                 configured_revision = str(config.get("tokenizer_asset_revision") or "")
                 configured_fingerprint = str(
                     config.get("tokenizer_asset_fingerprint") or ""
                 )
+                if configured_origin and configured_origin != str(
+                    asset_validation.get("origin") or ""
+                ):
+                    errors.append(
+                        "Tokenizer asset origin differs from the stored Router "
+                        "configuration"
+                    )
                 if configured_revision and configured_revision != str(
                     asset_validation.get("revision") or ""
                 ):
@@ -5216,6 +5225,7 @@ class SupervisorActor(xo.StatelessActor):
                         f"Rule {rule.get('id')} requires thinking but backend {backend_id} does not report reasoning or hybrid capability"
                     )
         if asset_id and asset_validation.get("valid"):
+            expected_origin = str(config.get("tokenizer_asset_origin") or "")
             expected_revision = str(config.get("tokenizer_asset_revision") or "")
             expected_fingerprint = str(config.get("tokenizer_asset_fingerprint") or "")
             for instance in self._token_router_registry.list(router_uid):
@@ -5225,12 +5235,18 @@ class SupervisorActor(xo.StatelessActor):
                     continue
                 loaded = instance.get("process", {}).get("tokenizer_asset", {})
                 loaded_id = str(loaded.get("asset_id") or "")
+                loaded_origin = str(loaded.get("origin") or "")
                 loaded_revision = str(loaded.get("revision") or "")
                 loaded_fingerprint = str(loaded.get("fingerprint") or "")
                 if loaded_id != asset_id:
                     errors.append(
                         f"Router instance {instance['instance_id']} loaded Tokenizer "
                         f"asset {loaded_id or '<unknown>'}, expected {asset_id}"
+                    )
+                if expected_origin and loaded_origin != expected_origin:
+                    errors.append(
+                        f"Router instance {instance['instance_id']} loaded Tokenizer "
+                        "asset origin differs from the Router configuration"
                     )
                 if expected_revision and loaded_revision != expected_revision:
                     errors.append(
