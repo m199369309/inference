@@ -53,7 +53,7 @@ def _normalize_content(messages: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     raise TokenizationError(
                         "The phase-1 Router only supports text chat content"
                     )
-                text_parts.append(str(part.get("text", "")))
+                text_parts.append(str(part.get("text") or ""))
             message["content"] = "\n".join(text_parts)
         elif not isinstance(content, str):
             raise TokenizationError("Message content must be a string or text list")
@@ -125,7 +125,7 @@ class DeepSeekV4TokenEstimator:
         }
         signature = inspect.signature(encode_messages)
         for name in signature.parameters:
-            if name in template_kwargs:
+            if name != "messages" and name in template_kwargs:
                 kwargs[name] = template_kwargs[name]
         try:
             prompt = encode_messages(messages, **kwargs)
