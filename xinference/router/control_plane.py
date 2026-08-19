@@ -250,5 +250,5 @@ class RouterControlPlaneClient:
 
             try:
                 await asyncio.wait_for(stop.wait(), timeout=poll_interval_seconds)
-            except TimeoutError:
+            except asyncio.TimeoutError:
                 pass
