@@ -1,0 +1,28 @@
+frontend/src/components/pages/launch-model/utils.tsx
+  f2329283820771b6 754-761,763
+xinference/core/replica_config.py
+  f2329283820771b6 59-60
+xinference/core/tests/test_replica_config.py
+  f2329283820771b6 80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ed993b7b7216f98586809df9212ed8ebff6d5bef",
+  "prompts": {
+    "f2329283820771b6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a03bd9-971d-7c53-a282-c9feddc6a675",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 17,
+      "total_deletions": 7,
+      "accepted_lines": 13,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/f9bfbd4d8df8f682804f899c712686121372b2c8916db2336d2f4bad88192c6f"
+    }
+  }
+}
