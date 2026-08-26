@@ -1,0 +1,42 @@
+frontend/src/components/pages/launch-model/utils.tsx
+  f2329283820771b6 529,565,576-579,581,583-584,716-776,778-795,802-804,943-947,1047-1062,1087-1113
+frontend/src/i18n/locales/en.ts
+  f2329283820771b6 506
+frontend/src/i18n/locales/ko.ts
+  f2329283820771b6 492
+frontend/src/components/pages/launch-model/launch-dialog/launch-dialog.tsx
+  f2329283820771b6 50,116-117,460-461,1460-1461,1463-1464,1591-1598
+frontend/src/components/pages/launch-model/launch-dialog/command-line.tsx
+  f2329283820771b6 4-5,11-12,14-15,19-25,31,36-44,48-58,60-70,72,77,79-92,95,107,123,147,154
+doc/source/user_guide/launch.rst
+  f2329283820771b6 94-108,110-117
+xinference/deploy/test/test_cmdline.py
+  f2329283820771b6 14,438-570
+frontend/src/i18n/locales/ja.ts
+  f2329283820771b6 493
+frontend/src/i18n/locales/zh.ts
+  f2329283820771b6 484
+xinference/deploy/cmdline.py
+  f2329283820771b6 16,25,805-812,933,974-1017,1088
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1d0840f62264c10c363b8586d526d02405d6f426",
+  "prompts": {
+    "f2329283820771b6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a03bd9-971d-7c53-a282-c9feddc6a675",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 440,
+      "total_deletions": 60,
+      "accepted_lines": 439,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/7b627a3a176b3d1f458039cb343213d8c01df20644f4ec8c5171b736427491f6"
+    }
+  }
+}
