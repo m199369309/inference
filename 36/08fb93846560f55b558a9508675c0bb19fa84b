@@ -1,0 +1,32 @@
+frontend/src/components/pages/launch-model/utils.tsx
+  f2329283820771b6 33-37,426-427,506,546,730
+frontend/src/components/pages/launch-model/launch-dialog/replica-placement-config.tsx
+  f2329283820771b6 16,80-87
+frontend/src/components/pages/launch-model/replica-config-utils.mjs
+  f2329283820771b6 1-87
+frontend/src/components/pages/launch-model/launch-dialog/launch-dialog.tsx
+  f2329283820771b6 460-465
+frontend/src/components/pages/launch-model/replica-config-utils.test.mjs
+  f2329283820771b6 1-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3608fb93846560f55b558a9508675c0bb19fa84b",
+  "prompts": {
+    "f2329283820771b6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a03bd9-971d-7c53-a282-c9feddc6a675",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 163,
+      "total_deletions": 42,
+      "accepted_lines": 163,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/be2f78a22baed5b9d40ae9f557fd81202d008744f529f252356f3d1d5efa68e3"
+    }
+  }
+}
