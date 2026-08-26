@@ -1,0 +1,26 @@
+pyproject.toml
+  c3e1b34ebfefa1f0 110
+xinference/tests/test_build_backend.py
+  c3e1b34ebfefa1f0 22-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c4009519897b70f4b902a6c01004cea1fb3a17f5",
+  "prompts": {
+    "c3e1b34ebfefa1f0": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a03de8-1bdf-7923-a002-82e24d6c3d6b",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 7,
+      "total_deletions": 2,
+      "accepted_lines": 6,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/c9974c895a9155543b1725b9efb7848f1bd244a5e961cbaf21f73d04fbff8a60"
+    }
+  }
+}
