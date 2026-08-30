@@ -1,0 +1,26 @@
+xinference/model/embedding/tests/test_embedding_models.py
+  9cb9dbec183f6346 126
+xinference/model/embedding/model_spec.json
+  9cb9dbec183f6346 1464
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "1c8acdf0011ca732e5acc8c9e961f41b2062b508",
+  "prompts": {
+    "9cb9dbec183f6346": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a051d5-298b-78f2-8693-bb03eab0067e",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 114,
+      "total_deletions": 114,
+      "accepted_lines": 68,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/c87b1dd59735f644b11114bbef787afa8bb0fb71d77c026f92e868e3ac488113"
+    }
+  }
+}
