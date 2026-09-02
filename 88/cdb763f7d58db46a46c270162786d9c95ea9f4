@@ -1,0 +1,26 @@
+xinference/model/scheduler/tests/test_batch_scheduler.py
+  0849e89543c70735 1-150
+xinference/model/scheduler/batch.py
+  0849e89543c70735 115-148,153-159,208-217,255-256,260-269
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "88cdb763f7d58db46a46c270162786d9c95ea9f4",
+  "prompts": {
+    "0849e89543c70735": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a061e8-207c-7742-afd1-5b52e9b94b35",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 216,
+      "total_deletions": 13,
+      "accepted_lines": 213,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/fa7699a970c748b2c030c44a91b22e0fde56eee84f76feeb0ad2a100df386be3"
+    }
+  }
+}
