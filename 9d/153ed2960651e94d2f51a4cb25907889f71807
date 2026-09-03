@@ -1,0 +1,24 @@
+xinference/model/llm/transformers/tests/test_cache_compatibility.py
+  0849e89543c70735 178-179,183-192
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "9d153ed2960651e94d2f51a4cb25907889f71807",
+  "prompts": {
+    "0849e89543c70735": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a061e8-207c-7742-afd1-5b52e9b94b35",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 12,
+      "total_deletions": 13,
+      "accepted_lines": 12,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/87b7c8e132a04eddd33693c4a71b3a8ea59e94839f645b6fa7c5881caa125f2b"
+    }
+  }
+}
