@@ -1,0 +1,26 @@
+xinference/api/tests/test_restful_api_metrics.py
+  89b32304cb7ab96e 1-123
+xinference/api/restful_api.py
+  89b32304cb7ab96e 338,345-349,352-362,432,1005-1006,1010
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "28cc13c6e0af768933810fab0cd8aacbd24df19f",
+  "prompts": {
+    "89b32304cb7ab96e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09b37-fe3e-7112-b32a-519c4a9e83d6",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 11258,
+      "total_deletions": 12,
+      "accepted_lines": 11257,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/f8bee6c1930e8d8d8fdb0b28c76f59abed3a25ef0f903274ca2c231f0a8fce92"
+    }
+  }
+}
