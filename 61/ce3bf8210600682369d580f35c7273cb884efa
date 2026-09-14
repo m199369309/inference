@@ -1,0 +1,26 @@
+xinference/model/audio/tests/test_funasr.py
+  96e2feea6df095dd 153-176
+xinference/model/audio/funasr.py
+  96e2feea6df095dd 116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "61ce3bf8210600682369d580f35c7273cb884efa",
+  "prompts": {
+    "96e2feea6df095dd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a07c-bb90-74c0-92e0-dc06546efa90",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 28,
+      "total_deletions": 11,
+      "accepted_lines": 11109,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/162f642bd1dbd98f9dba16d505da289b659febe550b4d2a5a7bb47df13439e65"
+    }
+  }
+}
