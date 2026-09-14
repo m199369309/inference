@@ -1,0 +1,36 @@
+xinference/api/tests/test_audio_input_errors.py
+  96e2feea6df095dd 1-172
+xinference/api/restful_api.py
+  96e2feea6df095dd 73,2270-2272,2384-2386
+xinference/core/exceptions.py
+  96e2feea6df095dd 20-30
+xinference/model/audio/tests/test_megatts.py
+  96e2feea6df095dd 46-262
+xinference/model/audio/funasr.py
+  96e2feea6df095dd 19,49-62,64-103,105-108,112,119,123,175-179,206-214,225-227
+xinference/model/audio/tests/test_funasr.py
+  96e2feea6df095dd 94-192
+xinference/model/audio/megatts.py
+  96e2feea6df095dd 16,18-20,27-31,70-161,184-186,188-192,207-208,210-211
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "76df78347231d9fa947e23f28facb2a680c774ee",
+  "prompts": {
+    "96e2feea6df095dd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a07c-bb90-74c0-92e0-dc06546efa90",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 3229,
+      "total_deletions": 141,
+      "accepted_lines": 3114,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/b9673915bae9cdd6164a62a9886e78c19bd2e3870b9c70471a9fe4d8cb3c5b7e"
+    }
+  }
+}
