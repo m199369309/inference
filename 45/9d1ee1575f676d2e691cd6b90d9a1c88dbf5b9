@@ -1,0 +1,42 @@
+doc/source/locale/it/LC_MESSAGES/models/model_abilities/audio.po
+  96e2feea6df095dd 981-992
+doc/source/locale/fr/LC_MESSAGES/models/model_abilities/audio.po
+  96e2feea6df095dd 988-999
+doc/source/locale/ja/LC_MESSAGES/models/model_abilities/audio.po
+  96e2feea6df095dd 905-916
+doc/source/locale/pt_BR/LC_MESSAGES/models/model_abilities/audio.po
+  96e2feea6df095dd 970-981
+doc/source/locale/zh_CN/LC_MESSAGES/models/model_abilities/audio.po
+  96e2feea6df095dd 1007-1018
+doc/source/locale/zh_TW/LC_MESSAGES/models/model_abilities/audio.po
+  96e2feea6df095dd 879-890
+doc/source/locale/ko/LC_MESSAGES/models/model_abilities/audio.po
+  96e2feea6df095dd 904-915
+doc/source/models/model_abilities/audio.rst
+  96e2feea6df095dd 44-53
+doc/source/locale/de/LC_MESSAGES/models/model_abilities/audio.po
+  96e2feea6df095dd 973-984
+doc/source/locale/es/LC_MESSAGES/models/model_abilities/audio.po
+  96e2feea6df095dd 968-979
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "459d1ee1575f676d2e691cd6b90d9a1c88dbf5b9",
+  "prompts": {
+    "96e2feea6df095dd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a07c-bb90-74c0-92e0-dc06546efa90",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 8792,
+      "total_deletions": 0,
+      "accepted_lines": 11202,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/2636bc80a898c44049d76fa0b8d142085cf819125dc00b65c7f23c317a889fdc"
+    }
+  }
+}
