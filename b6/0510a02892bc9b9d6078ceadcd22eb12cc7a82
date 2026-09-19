@@ -1,0 +1,26 @@
+xinference/core/worker.py
+  7dee9c187b533c5a 37,46,147-148,1564-1632,5742-5746,5748-5749,5752-5753,5756-5760,5780-5784
+xinference/core/tests/test_worker.py
+  7dee9c187b533c5a 543-582,596-598,603-604,632-806,3327-3329
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.8",
+  "base_commit_sha": "b60510a02892bc9b9d6078ceadcd22eb12cc7a82",
+  "prompts": {
+    "7dee9c187b533c5a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0b7d1-c21a-7df0-bd61-81b017bd3581",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 315,
+      "total_deletions": 39,
+      "accepted_lines": 315,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/d19ac605f6fed01ad628c7c41b53868b339283de3e6a1a2451000ed3aaa4f411"
+    }
+  }
+}
