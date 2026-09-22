@@ -1,0 +1,44 @@
+frontend/src/types/services.ts
+  f6ac16d8d14407f8 38
+frontend/src/components/pages/cluster-information.tsx
+  f6ac16d8d14407f8 20-96,110-111,117-118,121-127,137,146-149,155-156,159-165,176,180,186-188,191-193,200,205-206,209-215,326,342-344,347-348,371,381,397-403
+frontend/src/i18n/locales/ko.ts
+  f6ac16d8d14407f8 1014-1017
+xinference/core/worker.py
+  f6ac16d8d14407f8 55,6486-6488
+xinference/core/tests/test_worker.py
+  f6ac16d8d14407f8 33,42-48,824-826,840-855,1378-1500
+frontend/src/i18n/locales/en.ts
+  f6ac16d8d14407f8 1038-1039,1041
+xinference/core/tests/test_cluster_metrics.py
+  f6ac16d8d14407f8 25,29,174-210
+frontend/src/i18n/locales/zh.ts
+  f6ac16d8d14407f8 991-994
+frontend/src/i18n/locales/zh-TW.ts
+  f6ac16d8d14407f8 1003-1006
+frontend/src/i18n/locales/ja.ts
+  f6ac16d8d14407f8 1022-1023,1025
+xinference/core/supervisor.py
+  f6ac16d8d14407f8 119-122,242-245,1507-1509,4423,4502,5718-5866,5880-5903,5945-5950,5993
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.9",
+  "base_commit_sha": "15171a3faefbbf8d54dfb40224e744a64ca1858b",
+  "prompts": {
+    "f6ac16d8d14407f8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0c66b-fb08-7200-874b-63cb2ee6ecdb",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 11905,
+      "total_deletions": 131,
+      "accepted_lines": 11898,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/f27c9114f64d0857d6380d00b4c695d9c084f8b717a8a5ea042f9f2dd826ddb7"
+    }
+  }
+}
