@@ -1,0 +1,24 @@
+xinference/core/tests/test_autostart.py
+  f6ac16d8d14407f8 243,277-279
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.9",
+  "base_commit_sha": "b5549f5091a623f591d52b9927325079f9764a1d",
+  "prompts": {
+    "f6ac16d8d14407f8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0c66b-fb08-7200-874b-63cb2ee6ecdb",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "郑明再 <zhengmingzai@cvte.com>",
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 0,
+      "accepted_lines": 11357,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gz.cvte.cn/cas/660c54fe17775ace34a0e609b596562207a65ed6dc3ae734d118073d2127103e"
+    }
+  }
+}
